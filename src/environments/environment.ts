@@ -6,6 +6,8 @@
 export const environment = {
   production: false,
   deployPath: '.',
-  apiPath: '',
-  apiPathChangeable: false
+  apiPath: 'http://192.168.7.108:8080',
+  apiPathChangeable: false,
+  isStatic: false,
+  defaultLng: 'zh',
 };

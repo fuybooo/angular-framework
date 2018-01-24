@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {CoreService} from '../core/core.service';
+import {LoginService} from './login.service';
 
 @Component({
   selector: 'app-login',
@@ -9,11 +9,12 @@ import {CoreService} from '../core/core.service';
 export class LoginComponent implements OnInit {
 
   constructor(
-    private coreService: CoreService
+    private loginService: LoginService
   ) { }
 
   ngOnInit() {
-    this.coreService.testCoreService();
   }
-
+  login() {
+    this.loginService.login();
+  }
 }

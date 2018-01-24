@@ -6,6 +6,7 @@ import {loginRoutes} from './login-route';
 import {SharedModule} from '../shared/shared.module';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {HttpInterceptorService} from '../core/http-interceptor.service';
+import {LoginService} from './login.service';
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import {HttpInterceptorService} from '../core/http-interceptor.service';
     RouterModule.forChild(loginRoutes)
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true},
+    LoginService
   ],
   declarations: [LoginComponent, LoginResetPasswordComponent]
 })

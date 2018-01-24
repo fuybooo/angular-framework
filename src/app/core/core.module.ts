@@ -10,6 +10,9 @@ import {environment} from '../../environments/environment';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpInterceptorService} from './http-interceptor.service';
 import {CoreService} from './core.service';
+import {DataService} from './data.service';
+import {MessageService} from './message.service';
+import {ModalService} from './modal.service';
 
 export function createTranslateHttpLoader(http: any) {
   return new TranslateHttpLoader(http, environment.deployPath + '/assets/i18n/', '.json');
@@ -35,7 +38,10 @@ export function createTranslateHttpLoader(http: any) {
   providers: [
     {provide: NZ_LOCALE, useValue: zhCN},
     {provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true},
-    CoreService
+    CoreService,
+    DataService,
+    MessageService,
+    ModalService
   ]
 })
 export class CoreModule { }
