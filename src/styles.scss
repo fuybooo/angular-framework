@@ -1,4 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-.f100 {
-  font-size: 100px;
-}
+@import "assets/scss/vars.scss";
+@import "assets/scss/app-base.scss";
+@import "assets/scss/common.scss";

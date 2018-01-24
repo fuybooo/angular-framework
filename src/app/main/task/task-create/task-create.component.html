@@ -1,0 +1,72 @@
+<div class="task-form-box">
+  <form nz-form [formGroup]="form" class="login-form">
+    <div nz-form-item nz-row>
+      <div nz-form-label nz-col [nzSpan]="7">
+        <label>公司名称</label>
+      </div>
+      <div nz-col [nzSpan]="12" nz-form-control>
+        <nz-input formControlName="field1" [nzType]="'text'" [nzPlaceHolder]="'请输入公司名称'" [nzSize]="'large'">
+        </nz-input>
+      </div>
+    </div>
+    <div nz-form-item nz-row>
+      <div nz-form-label nz-col [nzSpan]="7">
+        <label>金额</label>
+      </div>
+      <div nz-col [nzSpan]="12" nz-form-control class="nz-input-number-w">
+        <nz-input-number formControlName="field2" [nzStep]="100"
+                         [nzFormatter]="formatterYuan" [nzParser]="parserYuan"></nz-input-number>
+      </div>
+    </div>
+    <div nz-form-item nz-row>
+      <div nz-form-label nz-col [nzSpan]="7">
+        <label>事项</label>
+      </div>
+      <div nz-col [nzSpan]="12" nz-form-control>
+        <nz-input formControlName="field3" [nzType]="'text'" [nzPlaceHolder]="''" [nzSize]="'large'">
+        </nz-input>
+      </div>
+    </div>
+    <div nz-form-item nz-row>
+      <div nz-form-label nz-col [nzSpan]="7">
+        <label>交接单</label>
+      </div>
+      <div nz-col [nzSpan]="12" nz-form-control>
+        <nz-input formControlName="field4" [nzType]="'textarea'" [nzPlaceHolder]="''" [nzSize]="'large'">
+        </nz-input>
+      </div>
+    </div>
+    <div nz-form-item nz-row>
+      <div nz-form-label nz-col [nzSpan]="7">
+        <label>负责人</label>
+      </div>
+      <div nz-col [nzSpan]="12" nz-form-control>
+        <nz-select formControlName="field5" [nzSize]="'large'"
+                   [nzPlaceHolder]="'请选择人员'"
+                   [nzNotFoundContent]="'无法找到'"
+                   nzShowSearch>
+          <nz-option *ngFor="let option of field5Options" [nzLabel]="option.label" [nzValue]="option.value"></nz-option>
+        </nz-select>
+      </div>
+    </div>
+    <div nz-form-item nz-row>
+      <div nz-form-label nz-col [nzSpan]="7">
+        <label>下一环节负责人</label>
+      </div>
+      <div nz-col [nzSpan]="12" nz-form-control>
+        <nz-select formControlName="field6" [nzSize]="'large'"
+                   [nzPlaceHolder]="'请选择人员'"
+                   [nzNotFoundContent]="'无法找到'"
+                   nzShowSearch>
+          <nz-option *ngFor="let option of field6Options" [nzLabel]="option.label" [nzValue]="option.value"></nz-option>
+        </nz-select>
+      </div>
+    </div>
+    <div nz-form-item nz-row [nzGutter]="20">
+      <div nz-col [nzOffset]="6" [nzSpan]="12" nz-form-control class="tac">
+        <button nz-button [nzType]="'primary'"><span>确定</span></button>
+        <button nz-button [nzType]="'default'"><span>取消</span></button>
+      </div>
+    </div>
+  </form>
+</div>

@@ -8,12 +8,16 @@ export const mainRoutes: Routes = [
     children: [
       {
         path: '',
-        loadChildren: 'app/main/dashboard/dashboard.module#DashboardModule'
+        loadChildren: 'app/main/task/task.module#TaskModule'
       },
       {
         path: 'settings',
         loadChildren: 'app/main/settings/settings.module#SettingsModule'
-      }
+      },
+      {
+        path: 'user',
+        loadChildren: 'app/main/user/user.module#UserModule'
+      },
     ]
   },
 ];

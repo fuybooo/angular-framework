@@ -6,9 +6,15 @@ export const loginRoutes: Routes = [
   {
     path: '',
     component: LoginComponent,
+    data: {
+      title: '登录'
+    }
   },
   {
     path: 'resetPassword',
-    component: LoginResetPasswordComponent
+    component: LoginResetPasswordComponent,
+    data: {
+      title: '找回密码'
+    }
   }
 ];

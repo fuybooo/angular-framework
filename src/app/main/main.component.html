@@ -1,4 +1,39 @@
-<p>
-  main works!
-  <router-outlet></router-outlet>
-</p>
+<nz-layout>
+  <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
+    <div class="logo">
+      {{mainName}}
+    </div>
+    <ul nz-menu [nzTheme]="'dark'" [nzMode]="isCollapsed?'vertical':'inline'">
+      <li nz-menu-item *ngFor="let item of navList" [nzSelected]="item.isActive" (click)="onClickItem(item)">
+        <span><i class="anticon" [ngClass]="item.iconCls"></i><span class="nav-text">{{item.label}}</span></span>
+      </li>
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header style="background: #fff; padding:0;">
+      <div nz-row>
+        <div nz-col [nzSpan]="12">
+          <i class="anticon trigger" [class.anticon-menu-fold]="!isCollapsed" [class.anticon-menu-unfold]="isCollapsed" (click)="switchSide()"></i>
+          <span class="primary-title">任务管理系统</span>
+        </div>
+        <div nz-col [nzSpan]="12" class="tar">
+          <span>
+            <i class="anticon anticon-user mr5"></i>{{currentUser?.name}}
+          </span>
+          <a class="pri50i pl40i" (click)="logout()">
+            <i class="anticon anticon-logout mr5"></i>退出
+          </a>
+        </div>
+      </div>
+    </nz-header>
+    <nz-content style="margin:0 16px;">
+      <nz-breadcrumb style="margin:12px 0;">
+        <nz-breadcrumb-item>{{currentItem?.label}}</nz-breadcrumb-item>
+      </nz-breadcrumb>
+      <div class="main-content">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+    <nz-footer style="text-align: center;">Design ©2018</nz-footer>
+  </nz-layout>
+</nz-layout>

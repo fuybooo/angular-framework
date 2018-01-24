@@ -8,6 +8,8 @@ import {mainRoutes} from './main-route';
 import {SharedModule} from '../shared/shared.module';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {HttpInterceptorService} from '../core/http-interceptor.service';
+import { TaskComponent } from './task/task.component';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
   imports: [

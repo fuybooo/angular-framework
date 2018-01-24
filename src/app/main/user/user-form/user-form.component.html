@@ -1,0 +1,65 @@
+<div class="task-form-box">
+  <form nz-form [formGroup]="form" class="login-form">
+    <div nz-form-item nz-row>
+      <div nz-form-label nz-col [nzSpan]="7">
+        <label>姓名</label>
+      </div>
+      <div nz-col [nzSpan]="12" nz-form-control>
+        <nz-input formControlName="field1" [nzType]="'text'" [nzPlaceHolder]="''" [nzSize]="'large'">
+        </nz-input>
+      </div>
+    </div>
+    <div nz-form-item nz-row>
+      <div nz-form-label nz-col [nzSpan]="7">
+        <label>年龄</label>
+      </div>
+      <div nz-col [nzSpan]="12" nz-form-control>
+        <nz-input formControlName="field1" [nzType]="'text'" [nzPlaceHolder]="''" [nzSize]="'large'">
+        </nz-input>
+      </div>
+    </div>
+    <div nz-form-item nz-row>
+      <div nz-form-label nz-col [nzSpan]="7">
+        <label>出生日期</label>
+      </div>
+      <div nz-col [nzSpan]="12" nz-form-control>
+        <nz-input formControlName="field1" [nzType]="'text'" [nzPlaceHolder]="''" [nzSize]="'large'">
+        </nz-input>
+      </div>
+    </div>
+    <div nz-form-item nz-row>
+      <div nz-form-label nz-col [nzSpan]="7">
+        <label>住址</label>
+      </div>
+      <div nz-col [nzSpan]="12" nz-form-control>
+        <nz-input formControlName="field1" [nzType]="'text'" [nzPlaceHolder]="''" [nzSize]="'large'">
+        </nz-input>
+      </div>
+    </div>
+    <div nz-form-item nz-row>
+      <div nz-form-label nz-col [nzSpan]="7">
+        <label>电话</label>
+      </div>
+      <div nz-col [nzSpan]="12" nz-form-control>
+        <nz-input formControlName="field1" [nzType]="'text'" [nzPlaceHolder]="''" [nzSize]="'large'">
+        </nz-input>
+      </div>
+    </div>
+    <div nz-form-item nz-row>
+      <div nz-form-label nz-col [nzSpan]="7">
+        <label>职务</label>
+      </div>
+      <div nz-col [nzSpan]="12" nz-form-control>
+        <nz-input formControlName="field1" [nzType]="'text'" [nzPlaceHolder]="''" [nzSize]="'large'">
+        </nz-input>
+      </div>
+    </div>
+
+    <div nz-form-item nz-row [nzGutter]="20">
+      <div nz-col [nzOffset]="6" [nzSpan]="12" nz-form-control class="tac">
+        <button nz-button [nzType]="'primary'"><span>确定</span></button>
+        <button nz-button [nzType]="'default'"><span>取消</span></button>
+      </div>
+    </div>
+  </form>
+</div>

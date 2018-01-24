@@ -17,17 +17,6 @@ export class LoginService {
     private messageService: MessageService
   ) { }
   login() {
-    this.http.post(this.dataService.urls.login, {
-      username: 'admin',
-      password: 'adminA',
-      lng: this.coreService.getLng()
-    }).subscribe((res: HttpRes) => {
-      if (res.code === '200') {
-        console.log('登录成功!');
-        this.router.navigate(['/main']);
-      } else {
-        this.messageService.error(res.msg);
-      }
-    });
+    this.router.navigate(['/main']);
   }
 }
