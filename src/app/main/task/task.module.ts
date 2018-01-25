@@ -8,6 +8,7 @@ import {taskRoutes} from './task-route';
 import { TaskCreateComponent } from './task-create/task-create.component';
 import {TaskService} from './task.service';
 import { TaskDetailComponent } from './task-detail/task-detail.component';
+import {StatePipe} from './task.pipe';
 
 @NgModule({
   imports: [
@@ -21,6 +22,6 @@ import { TaskDetailComponent } from './task-detail/task-detail.component';
   entryComponents: [
     TaskDetailComponent
   ],
-  declarations: [TaskComponent, TaskCreateComponent, TaskDetailComponent]
+  declarations: [TaskComponent, TaskCreateComponent, TaskDetailComponent, StatePipe]
 })
 export class TaskModule { }

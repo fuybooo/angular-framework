@@ -5,11 +5,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve -o",
-    "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build-prod-aot": "ng build --aot=true --build-optimizer=true --preserve-symlinks=true --env=prod --base-href /xxx --deploy-url /xxx/ --sourcemaps=false"
+    "build": "ng build --aot=true --build-optimizer=true --preserve-symlinks=true --env=prod --sourcemaps=false"
   },
   "private": true,
   "dependencies": {

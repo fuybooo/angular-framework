@@ -4,6 +4,7 @@ import {TranslateModule} from '@ngx-translate/core';
 import {NgZorroAntdModule} from 'ng-zorro-antd';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {ButtonClickDirective} from './directive/button-click.directive';
 
 @NgModule({
   imports: [
@@ -17,7 +18,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     TranslateModule,
     // 本地模块
   ],
-  declarations: [],
+  declarations: [
+    ButtonClickDirective
+  ],
   exports: [
     // 官方模块
     CommonModule,
@@ -27,7 +30,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     // 第三方模块
     NgZorroAntdModule,
     TranslateModule,
-    // 本地模块
+    // 本地
+    ButtonClickDirective,
   ]
 })
 export class SharedModule { }

@@ -21,6 +21,8 @@ export class UserComponent implements OnInit {
   total = 1;
   current = 1;
   pageSize = 10;
+  searchText = '';
+  loading = false;
   modal;
   constructor(
     private nzModalService: NzModalService,
@@ -82,5 +84,11 @@ export class UserComponent implements OnInit {
         this.dataSet.findIndex(value => value.email === data.email), 1
       );
     });
+  }
+  refreshData(flag = false) {
+
+  }
+  onSearch(value) {
+
   }
 }
