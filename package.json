@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build": "ng build --aot=true --build-optimizer=true --preserve-symlinks=true --env=prod --sourcemaps=false --base-href '' --deploy-url ''"
+    "build": "ng build --aot=true --build-optimizer=true --preserve-symlinks=true --env=prod --sourcemaps=false --base-href / --deploy-url /angular-framework/"
   },
   "private": true,
   "dependencies": {
