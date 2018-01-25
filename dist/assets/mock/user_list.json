@@ -1,0 +1,26 @@
+{
+  "code": "200",
+  "msg": "",
+  "data": {
+    "result": [
+      {
+        "name": "张三",
+        "email": "zhangsan@xxx.com",
+        "password": "123456"
+      },
+      {
+        "name": "李四",
+        "email": "lisi@xxx.com",
+        "password": "123456"
+      },
+      {
+        "name": "王五",
+        "email": "wangwu@xxx.com",
+        "password": "123456"
+      }
+    ],
+    "pageSize": 10,
+    "pageNumber": 1,
+    "total": 3
+  }
+}
