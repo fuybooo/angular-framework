@@ -23,7 +23,7 @@ export class DataService {
     for (const url in this.urls) {
       if (this.urls.hasOwnProperty(url)) {
         if (environment.isStatic) {
-          this.urls[url] = './assets/mock' + this.urls[url] + '.json';
+          this.urls[url] = environment.deployPath + '/assets/mock' + this.urls[url] + '.json';
         } else {
           this.urls[url] = path + this.urls[url];
         }

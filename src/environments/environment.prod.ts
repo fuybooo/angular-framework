@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  deployPath: '.',
+  deployPath: 'angular-framework',
   apiPath: '',
   apiPathChangeable: false,
   isStatic: true,
