@@ -15,6 +15,21 @@ export class TaskDetailComponent implements OnInit {
   dataSet = [];
   loading = true;
   params = {};
+  field5 = '';
+  field5Options = [
+    {
+      label: '张三',
+      value: 'zs'
+    },
+    {
+      label: '李四',
+      value: 'ls'
+    },
+    {
+      label: '王五',
+      value: 'ww'
+    },
+  ];
   modal = null;
 
   reset() {
@@ -46,8 +61,13 @@ export class TaskDetailComponent implements OnInit {
 
   }
 
-  onClickSubmit(data) {
-
+  onClickSubmit(data, content) {
+    this.nzModalService.open({
+      title: '选择下一步负责人',
+      content: content,
+      width: 400,
+      zIndex: 1030
+    });
   }
   onCLickAdd() {
     this.nzModalService.open({

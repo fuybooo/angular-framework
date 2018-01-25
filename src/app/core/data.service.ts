@@ -17,7 +17,8 @@ export class DataService {
       login: '/login',
       dashboard: '/dashboard',
       settings: '/settings',
-      task_list: '/task_list'
+      task_list: '/task_list',
+      user_list: '/user_list',
     };
     for (const url in this.urls) {
       if (this.urls.hasOwnProperty(url)) {

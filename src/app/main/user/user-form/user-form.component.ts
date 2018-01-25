@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
@@ -7,6 +7,11 @@ import {FormBuilder, FormGroup} from '@angular/forms';
   styleUrls: ['./user-form.component.css']
 })
 export class UserFormComponent implements OnInit {
+  @Input() userData = {
+    name: '',
+    email: '',
+    password: '',
+  };
   form: FormGroup;
   constructor(
     private fb: FormBuilder
@@ -14,17 +19,9 @@ export class UserFormComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.fb.group({
-      field1: [],
-      field2: [],
-      field3: [],
-      field4: [],
-      field5: [],
-      field6: [],
-      field7: [],
-      field8: [],
-      field9: [],
-      field10: [],
-      field11: [],
+      name: [this.userData.name],
+      email: [this.userData.email],
+      password: [this.userData.password],
     });
   }
 

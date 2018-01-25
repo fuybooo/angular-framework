@@ -55,9 +55,17 @@
       </ng-container>
       <ng-container *ngIf="data.field10 == 0">
         <a (click)="onClickEdit(data)">编辑</a>
-        <a class="ml10" (click)="onClickSubmit(data)">提交</a>
+        <a class="ml10" (click)="onClickSubmit(data, content)">提交</a>
       </ng-container>
     </td>
   </tr>
   </tbody>
 </nz-table>
+<ng-template #content>
+  <nz-select [(ngModel)]="field5" [nzSize]="'large'"
+             [nzPlaceHolder]="'请选择人员'"
+             [nzNotFoundContent]="'无法找到'"
+             nzShowSearch class="w">
+    <nz-option *ngFor="let option of field5Options" [nzLabel]="option.label" [nzValue]="option.value"></nz-option>
+  </nz-select>
+</ng-template>

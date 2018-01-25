@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {NzModalService} from 'ng-zorro-antd';
 import {UserFormComponent} from './user-form/user-form.component';
+import {UserService} from './user.service';
+import {ModalService} from '../../core/modal.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -9,58 +12,50 @@ import {UserFormComponent} from './user-form/user-form.component';
 })
 export class UserComponent implements OnInit {
 
-  _allChecked = false;
-  _disabledButton = true;
-  _checkedNumber = 0;
-  _displayData: Array<any> = [];
-  _operating = false;
-  _dataSet = [];
-  _indeterminate = false;
+  allChecked = false;
+  disabledButton = true;
+  checkedNumber = 0;
+  displayData: Array<any> = [];
+  dataSet = [];
+  indeterminate = false;
+  total = 1;
+  current = 1;
+  pageSize = 10;
   modal;
   constructor(
-    private nzModalService: NzModalService
+    private nzModalService: NzModalService,
+    private userService: UserService,
+    private modalService: ModalService,
+    private router: Router,
   ) {
   }
-  _displayDataChange($event) {
-    this._displayData = $event;
+  displayDataChange($event) {
+    this.displayData = $event;
   }
 
-  _refreshStatus() {
-    const allChecked = this._displayData.every(value => value.checked === true);
-    const allUnChecked = this._displayData.every(value => !value.checked);
-    this._allChecked = allChecked;
-    this._indeterminate = (!allChecked) && (!allUnChecked);
-    this._disabledButton = !this._dataSet.some(value => value.checked);
-    this._checkedNumber = this._dataSet.filter(value => value.checked).length;
+  refreshStatus() {
+    const allChecked = this.displayData.every(value => value.checked === true);
+    const allUnChecked = this.displayData.every(value => !value.checked);
+    this.allChecked = allChecked;
+    this.indeterminate = (!allChecked) && (!allUnChecked);
+    this.disabledButton = !this.dataSet.some(value => value.checked);
+    this.checkedNumber = this.dataSet.filter(value => value.checked).length;
   }
 
-  _checkAll(value) {
+  checkAll(value) {
     if (value) {
-      this._displayData.forEach(data => data.checked = true);
+      this.displayData.forEach(data => data.checked = true);
     } else {
-      this._displayData.forEach(data => data.checked = false);
+      this.displayData.forEach(data => data.checked = false);
     }
-    this._refreshStatus();
-  }
-
-  _operateData() {
-    this._operating = true;
-    setTimeout(_ => {
-      this._dataSet.forEach(value => value.checked = false);
-      this._refreshStatus();
-      this._operating = false;
-    }, 1000);
+    this.refreshStatus();
   }
 
   ngOnInit() {
-    for (let i = 0; i < 46; i++) {
-      this._dataSet.push({
-        key    : i,
-        name   : `Edward King ${i}`,
-        age    : 32,
-        address: `London, Park Lane no. ${i}`,
-      });
-    }
+    this.userService.getUserList({}, (res: any) => {
+      this.dataSet = res.data.result;
+      this.total = res.data.total;
+    });
   }
   onCLickAdd() {
     this.modal = this.nzModalService.open({
@@ -68,6 +63,24 @@ export class UserComponent implements OnInit {
       content: UserFormComponent,
       width: 800,
       footer: false,
+    });
+  }
+  onClickEdit(data) {
+    this.modal = this.nzModalService.open({
+      title: '修改',
+      content: UserFormComponent,
+      width: 800,
+      footer: false,
+      componentParams: {
+        userData: data
+      }
+    });
+  }
+  onClickDel(data) {
+    this.modalService.confirmDelete(() => {
+      this.dataSet.splice(
+        this.dataSet.findIndex(value => value.email === data.email), 1
+      );
     });
   }
 }
