@@ -1,5 +1,5 @@
 <nz-layout>
-  <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
+  <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null" class="main-sider">
     <div class="logo">
       {{mainName}}
     </div>
@@ -10,7 +10,7 @@
     </ul>
   </nz-sider>
   <nz-layout>
-    <nz-header style="background: #fff; padding:0;">
+    <nz-header class="main-header">
       <div nz-row>
         <div nz-col [nzSpan]="12">
           <i class="anticon trigger" [class.anticon-menu-fold]="!isCollapsed" [class.anticon-menu-unfold]="isCollapsed" (click)="switchSide()"></i>
