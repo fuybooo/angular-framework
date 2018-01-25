@@ -8,9 +8,10 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 })
 export class UserFormComponent implements OnInit {
   @Input() userData = {
-    name: '',
-    email: '',
+    username: '',
     password: '',
+    realName: '',
+    permission: 1,
   };
   form: FormGroup;
   constructor(
@@ -19,9 +20,10 @@ export class UserFormComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.fb.group({
-      name: [this.userData.name],
-      email: [this.userData.email],
+      username: [this.userData.username],
       password: [this.userData.password],
+      realName: [this.userData.realName],
+      permission: [this.userData.permission],
     });
   }
 

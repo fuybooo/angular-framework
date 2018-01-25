@@ -4,19 +4,28 @@
   "data": {
     "result": [
       {
-        "name": "张三",
-        "email": "zhangsan@xxx.com",
-        "password": "123456"
+        "username": "zhangsan@xxx.com",
+        "realName": "张三",
+        "password": "123456",
+        "permission": 1
       },
       {
-        "name": "李四",
-        "email": "lisi@xxx.com",
-        "password": "123456"
+        "username": "lisi@xxx.com",
+        "realName": "李四",
+        "password": "123456",
+        "permission": 2
       },
       {
-        "name": "王五",
-        "email": "wangwu@xxx.com",
-        "password": "123456"
+        "username": "wangwu@xxx.com",
+        "realName": "王五",
+        "password": "123456",
+        "permission": 1
+      },
+      {
+        "username": "wangliu@xxx.com",
+        "realName": "王六",
+        "password": "123456",
+        "permission": 2
       }
     ],
     "pageSize": 10,

@@ -63,15 +63,15 @@ export class UserComponent implements OnInit {
     this.modal = this.nzModalService.open({
       title: '添加人员',
       content: UserFormComponent,
-      width: 800,
+      width: 600,
       footer: false,
     });
   }
   onClickEdit(data) {
     this.modal = this.nzModalService.open({
-      title: '修改',
+      title: '编辑',
       content: UserFormComponent,
-      width: 800,
+      width: 600,
       footer: false,
       componentParams: {
         userData: data
@@ -81,7 +81,7 @@ export class UserComponent implements OnInit {
   onClickDel(data) {
     this.modalService.confirmDelete(() => {
       this.dataSet.splice(
-        this.dataSet.findIndex(value => value.email === data.email), 1
+        this.dataSet.findIndex(value => value.username === data.username), 1
       );
     });
   }

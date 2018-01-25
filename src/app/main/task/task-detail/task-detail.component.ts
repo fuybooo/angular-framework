@@ -58,7 +58,16 @@ export class TaskDetailComponent implements OnInit {
     this.refreshData();
   }
   onClickEdit(data) {
-
+    this.nzModalService.open({
+      title: '编辑任务',
+      content: TaskCreateComponent,
+      width: 1000,
+      footer: false,
+      zIndex: 1020,
+      componentParams: {
+        taskData: data
+      }
+    });
   }
 
   onClickSubmit(data, content) {

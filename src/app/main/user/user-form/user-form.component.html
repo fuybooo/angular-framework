@@ -2,19 +2,10 @@
   <form nz-form [formGroup]="form" class="login-form">
     <div nz-form-item nz-row>
       <div nz-form-label nz-col [nzSpan]="7">
-        <label>姓名</label>
+        <label>用户名</label>
       </div>
       <div nz-col [nzSpan]="12" nz-form-control>
-        <nz-input formControlName="name" [nzType]="'text'" [nzPlaceHolder]="''" [nzSize]="'large'">
-        </nz-input>
-      </div>
-    </div>
-    <div nz-form-item nz-row>
-      <div nz-form-label nz-col [nzSpan]="7">
-        <label>邮箱</label>
-      </div>
-      <div nz-col [nzSpan]="12" nz-form-control>
-        <nz-input formControlName="email" [nzType]="'text'" [nzPlaceHolder]="''" [nzSize]="'large'">
+        <nz-input formControlName="username" [nzType]="'text'" [nzPlaceHolder]="''" [nzSize]="'large'">
         </nz-input>
       </div>
     </div>
@@ -25,6 +16,30 @@
       <div nz-col [nzSpan]="12" nz-form-control>
         <nz-input formControlName="password" [nzType]="'text'" [nzPlaceHolder]="''" [nzSize]="'large'">
         </nz-input>
+      </div>
+    </div>
+    <div nz-form-item nz-row>
+      <div nz-form-label nz-col [nzSpan]="7">
+        <label>姓名</label>
+      </div>
+      <div nz-col [nzSpan]="12" nz-form-control>
+        <nz-input formControlName="realName" [nzType]="'text'" [nzPlaceHolder]="''" [nzSize]="'large'">
+        </nz-input>
+      </div>
+    </div>
+    <div nz-form-item nz-row>
+      <div nz-form-label nz-col [nzSpan]="7">
+        <label>权限</label>
+      </div>
+      <div nz-col [nzSpan]="12" nz-form-control>
+        <nz-radio-group formControlName="permission">
+          <label nz-radio [nzValue]="1">
+            <span>普通用户</span>
+          </label>
+          <label nz-radio [nzValue]="2">
+            <span>管理员</span>
+          </label>
+        </nz-radio-group>
       </div>
     </div>
 
