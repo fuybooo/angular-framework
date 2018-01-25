@@ -38,6 +38,7 @@
 .main-content {
   padding: 24px;
   background-color: #fff;
+  overflow: auto;
 }
 @media screen and (max-height: 572px) {
   .main-content {

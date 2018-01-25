@@ -2,43 +2,109 @@
   <form nz-form [formGroup]="form" class="login-form">
     <div nz-form-item nz-row>
       <div nz-form-label nz-col [nzSpan]="7">
-        <label>公司名称</label>
+        <label nz-form-item-required>公司名称</label>
       </div>
-      <div nz-col [nzSpan]="12" nz-form-control>
+      <div nz-col [nzSpan]="12" nz-form-control nzHasFeedback>
         <nz-input formControlName="field1" [nzType]="'text'" [nzPlaceHolder]="'请输入公司名称'" [nzSize]="'large'">
         </nz-input>
+        <div nz-form-explain *ngIf="getFormControl('field1').dirty&&getFormControl('field1').hasError('required')">
+          必填项不能为空
+        </div>
+        <div nz-form-explain *ngIf="getFormControl('field1').dirty&&getFormControl('field1').hasError('maxlength')">
+          最多不超过100个字
+        </div>
       </div>
     </div>
     <div nz-form-item nz-row>
       <div nz-form-label nz-col [nzSpan]="7">
-        <label>金额</label>
+        <label nz-form-item-required>金额</label>
       </div>
       <div nz-col [nzSpan]="12" nz-form-control class="nz-input-number-w">
-        <nz-input-number formControlName="field2" [nzStep]="100"
+        <nz-input-number formControlName="field2" [nzStep]="100" [nzSize]="'large'"
                          [nzFormatter]="formatterYuan" [nzParser]="parserYuan"></nz-input-number>
+        <div nz-form-explain *ngIf="getFormControl('field2').dirty&&getFormControl('field2').hasError('required')">
+          必填项不能为空
+        </div>
       </div>
     </div>
     <div nz-form-item nz-row>
       <div nz-form-label nz-col [nzSpan]="7">
-        <label>事项</label>
+        <label nz-form-item-required>事项</label>
       </div>
       <div nz-col [nzSpan]="12" nz-form-control>
         <nz-input formControlName="field3" [nzType]="'text'" [nzPlaceHolder]="''" [nzSize]="'large'">
         </nz-input>
+        <div nz-form-explain *ngIf="getFormControl('field3').dirty&&getFormControl('field3').hasError('required')">
+          必填项不能为空
+        </div>
+        <div nz-form-explain *ngIf="getFormControl('field3').dirty&&getFormControl('field3').hasError('maxlength')">
+          最多不超过100个字
+        </div>
       </div>
     </div>
     <div nz-form-item nz-row>
       <div nz-form-label nz-col [nzSpan]="7">
-        <label>交接单</label>
+        <label nz-form-item-required>区域</label>
+      </div>
+      <div nz-col [nzSpan]="12" nz-form-control>
+        <nz-input formControlName="field7" [nzType]="'text'" [nzPlaceHolder]="''" [nzSize]="'large'">
+        </nz-input>
+        <div nz-form-explain *ngIf="getFormControl('field7').dirty&&getFormControl('field7').hasError('required')">
+          必填项不能为空
+        </div>
+        <div nz-form-explain *ngIf="getFormControl('field7').dirty&&getFormControl('field7').hasError('maxlength')">
+          最多不超过100个字
+        </div>
+      </div>
+    </div>
+    <div nz-form-item nz-row>
+      <div nz-form-label nz-col [nzSpan]="7">
+        <label nz-form-item-required>进程</label>
+      </div>
+      <div nz-col [nzSpan]="12" nz-form-control>
+        <nz-input formControlName="field8" [nzType]="'text'" [nzPlaceHolder]="''" [nzSize]="'large'">
+        </nz-input>
+        <div nz-form-explain *ngIf="getFormControl('field8').dirty&&getFormControl('field8').hasError('required')">
+          必填项不能为空
+        </div>
+        <div nz-form-explain *ngIf="getFormControl('field8').dirty&&getFormControl('field8').hasError('maxlength')">
+          最多不超过100个字
+        </div>
+      </div>
+    </div>
+    <div nz-form-item nz-row>
+      <div nz-form-label nz-col [nzSpan]="7">
+        <label>备注</label>
+      </div>
+      <div nz-col [nzSpan]="12" nz-form-control>
+        <nz-input formControlName="field9" [nzType]="'textarea'" [nzPlaceHolder]="''" [nzSize]="'large'">
+        </nz-input>
+        <div nz-form-explain *ngIf="getFormControl('field9').dirty&&getFormControl('field9').hasError('required')">
+          必填项不能为空
+        </div>
+        <div nz-form-explain *ngIf="getFormControl('field9').dirty&&getFormControl('field9').hasError('maxlength')">
+          最多不超过100个字
+        </div>
+      </div>
+    </div>
+    <div nz-form-item nz-row>
+      <div nz-form-label nz-col [nzSpan]="7">
+        <label nz-form-item-required>交接单</label>
       </div>
       <div nz-col [nzSpan]="12" nz-form-control>
         <nz-input formControlName="field4" [nzType]="'textarea'" [nzPlaceHolder]="''" [nzSize]="'large'">
         </nz-input>
+        <div nz-form-explain *ngIf="getFormControl('field4').dirty&&getFormControl('field4').hasError('required')">
+          必填项不能为空
+        </div>
+        <div nz-form-explain *ngIf="getFormControl('field4').dirty&&getFormControl('field4').hasError('maxlength')">
+          最多不超过100个字
+        </div>
       </div>
     </div>
-    <div nz-form-item nz-row>
+    <div nz-form-item nz-row *ngIf="!isEdit">
       <div nz-form-label nz-col [nzSpan]="7">
-        <label>负责人</label>
+        <label nz-form-item-required>负责人</label>
       </div>
       <div nz-col [nzSpan]="12" nz-form-control>
         <nz-select formControlName="field5" [nzSize]="'large'"
@@ -49,9 +115,9 @@
         </nz-select>
       </div>
     </div>
-    <div nz-form-item nz-row>
+    <div nz-form-item nz-row *ngIf="!isEdit">
       <div nz-form-label nz-col [nzSpan]="7">
-        <label>下一环节负责人</label>
+        <label nz-form-item-required>下一环节负责人</label>
       </div>
       <div nz-col [nzSpan]="12" nz-form-control>
         <nz-select formControlName="field6" [nzSize]="'large'"
@@ -62,10 +128,25 @@
         </nz-select>
       </div>
     </div>
+    <div nz-form-item nz-row *ngIf="isEdit">
+      <div nz-form-label nz-col [nzSpan]="7">
+        <label nz-form-item-required>状态</label>
+      </div>
+      <div nz-col [nzSpan]="12" nz-form-control>
+        <nz-select formControlName="field10" [nzSize]="'large'" [nzPlaceHolder]="''">
+          <nz-option *ngFor="let option of field10Options" [nzLabel]="option.label" [nzValue]="option.value"></nz-option>
+        </nz-select>
+      </div>
+    </div>
     <div nz-form-item nz-row [nzGutter]="20">
       <div nz-col [nzOffset]="6" [nzSpan]="12" nz-form-control class="tac">
-        <button nz-button [nzType]="'primary'"><span>确定</span></button>
-        <button nz-button [nzType]="'default'"><span>取消</span></button>
+        <button nz-button [nzType]="'primary'" (click)="onClickSave(1)"
+                [disabled]="isEdit ? form.invalid : (form.invalid || !getFormControl('field5').value || !getFormControl('field6').value)"
+        ><span>提交</span></button>
+        <button nz-button [nzType]="'primary'" (click)="onClickSave(2)"
+                [disabled]="isEdit ? form.invalid : (form.invalid || !getFormControl('field5').value)"
+        ><span>保存</span></button>
+        <button *ngIf="isEdit" nz-button [nzType]="'default'" (click)="onClickCancel()"><span>取消</span></button>
       </div>
     </div>
   </form>

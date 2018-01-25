@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {TaskService} from '../task.service';
+import {NzModalSubject} from 'ng-zorro-antd';
 
 @Component({
   selector: 'app-task-create',
@@ -20,6 +22,7 @@ export class TaskCreateComponent implements OnInit {
     field10: '',
     field11: '',
   };
+  @Input() isEdit = false;
   form: FormGroup;
   field5Options = [
     {
@@ -49,26 +52,59 @@ export class TaskCreateComponent implements OnInit {
       value: 'ww'
     },
   ];
+  field10Options = [
+    {
+      label: '红',
+      value: 1
+    },
+    {
+      label: '黄',
+      value: 2
+    },
+    {
+      label: '绿',
+      value: 3
+    },
+  ];
   formatterYuan = value => `￥${value}`;
   parserYuan = value => value.replace('￥', '');
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private taskService: TaskService,
+    private subject: NzModalSubject
   ) { }
 
   ngOnInit() {
     this.form = this.fb.group({
-      field1: [this.taskData.field1],
-      field2: [this.taskData.field2],
-      field3: [this.taskData.field3],
-      field4: [this.taskData.field4],
-      field5: [this.taskData.field5],
-      field6: [this.taskData.field6],
-      field7: [this.taskData.field7],
-      field8: [this.taskData.field8],
-      field9: [this.taskData.field9],
+      field1: [this.taskData.field1, [Validators.required, Validators.maxLength(100)]],
+      field2: [this.taskData.field2, [this.moneyNotEmpty(), Validators.maxLength(100)]],
+      field3: [this.taskData.field3, [Validators.required, Validators.maxLength(100)]],
+      field4: [this.taskData.field4, [Validators.required, Validators.maxLength(100)]],
+      field5: [this.taskData.field5, [Validators.required, Validators.maxLength(100)]],
+      field6: [this.taskData.field6, [Validators.maxLength(100)]],
+      field7: [this.taskData.field7, [Validators.required, Validators.maxLength(100)]],
+      field8: [this.taskData.field8, [Validators.required, Validators.maxLength(100)]],
+      field9: [this.taskData.field9, [Validators.maxLength(100)]],
       field10: [this.taskData.field10],
-      field11: [this.taskData.field11],
     });
   }
-
+  moneyNotEmpty() {
+    return function(control: FormControl) {
+      if (control.value === '￥' || control.value === 0) {
+        return {error: true, required: true};
+      } else {
+        return null;
+      }
+    };
+  }
+  getFormControl(name) {
+    return this.form.controls[name];
+  }
+  onClickSave(type) {
+    this.taskService.saveTask();
+  }
+  onClickCancel() {
+    // 只有在弹框时才出现
+    this.subject.destroy();
+  }
 }

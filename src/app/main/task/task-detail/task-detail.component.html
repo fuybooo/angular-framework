@@ -1,6 +1,3 @@
-<div class="tar pri50i">
-  <button nz-button [nzType]="'primary'" (click)="onCLickAdd()"><span>添加</span></button>
-</div>
 <nz-table #nzTable
           [nzSize]="'middle'"
           [nzAjaxData]="dataSet"
@@ -61,6 +58,9 @@
   </tr>
   </tbody>
 </nz-table>
+<div class="tac">
+  <button nz-button [nzType]="'primary'" (click)="onCLickDone()"><span>彻底完成</span></button>
+</div>
 <ng-template #content>
   <nz-select [(ngModel)]="field5" [nzSize]="'large'"
              [nzPlaceHolder]="'请选择人员'"

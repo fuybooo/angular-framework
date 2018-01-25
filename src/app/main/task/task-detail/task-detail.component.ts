@@ -65,7 +65,8 @@ export class TaskDetailComponent implements OnInit {
       footer: false,
       zIndex: 1020,
       componentParams: {
-        taskData: data
+        taskData: data,
+        isEdit: true
       }
     });
   }
@@ -78,14 +79,8 @@ export class TaskDetailComponent implements OnInit {
       zIndex: 1030
     });
   }
-  onCLickAdd() {
-    this.nzModalService.open({
-      title: '添加任务',
-      content: TaskCreateComponent,
-      width: 1000,
-      footer: false,
-      zIndex: 1020
-    });
+  onCLickDone() {
+
   }
 
 }
