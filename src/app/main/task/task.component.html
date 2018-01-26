@@ -3,55 +3,59 @@
     <nz-input [nzType]="'search'" [nzPlaceHolder]="'输入内容进行搜索...'" [(ngModel)]="searchText" (nzOnSearch)="onSearch()"></nz-input>
   </div>
 </div>
-<nz-table #nzTable
-          [nzSize]="'middle'"
-          [nzAjaxData]="dataSet"
-          nzShowSizeChanger
-          [nzLoading]="loading"
-          [nzTotal]="total"
-          [(nzPageIndex)]="current"
-          (nzPageIndexChange)="refreshData()"
-          [(nzPageSize)]="pageSize"
-          (nzPageSizeChange)="refreshData(true)">
-  <thead nz-thead>
-  <tr>
-    <th nz-th><span>序号</span></th>
-    <th nz-th><span>公司名称</span></th>
-    <th nz-th><span>事项</span></th>
-    <th nz-th><span>区域</span></th>
-    <th nz-th><span>收费</span></th>
-    <th nz-th><span>交接单列表</span></th>
-    <th nz-th><span>负责人</span></th>
-    <th nz-th><span>开始时间</span></th>
-    <th nz-th><span>已用工作日</span></th>
-    <th nz-th><span>进程</span></th>
-    <th nz-th><span>状态</span></th>
-    <th nz-th><span>备注</span></th>
-    <th nz-th><span>操作</span></th>
-  </tr>
-  </thead>
-  <tbody nz-tbody>
-  <tr nz-tbody-tr *ngFor="let data of nzTable.data; let i = index">
-    <td nz-td>{{i + 1}}</td>
-    <td nz-td>{{data.field1}}</td>
-    <td nz-td>{{data.field2}}</td>
-    <td nz-td>{{data.field3}}</td>
-    <td nz-td>{{data.field4}}</td>
-    <td nz-td>{{data.field5}}</td>
-    <td nz-td>{{data.field6}}</td>
-    <td nz-td>{{data.field7}}</td>
-    <td nz-td>{{data.field8}}</td>
-    <td nz-td>{{data.field9}}</td>
-    <td nz-td>
-      <ng-container *ngIf="data.field10 == 1">
-        <i class="anticon anticon-check-circle-o"></i>
-      </ng-container>
-      <ng-container *ngIf="data.field10 == 0">
-        <i class="anticon anticon-close-circle-o"></i>
-      </ng-container>
-    </td>
-    <td nz-td>{{data.field11}}</td>
-    <td nz-td><a (click)="onClickTaskDetail(data)">详情</a></td>
-  </tr>
-  </tbody>
-</nz-table>
+<app-table
+  [url]="'task_list'"
+  [columns]="columns"
+></app-table>
+<!--<nz-table #nzTable-->
+          <!--[nzSize]="'middle'"-->
+          <!--[nzAjaxData]="dataSet"-->
+          <!--nzShowSizeChanger-->
+          <!--[nzLoading]="loading"-->
+          <!--[nzTotal]="total"-->
+          <!--[(nzPageIndex)]="current"-->
+          <!--(nzPageIndexChange)="refreshData()"-->
+          <!--[(nzPageSize)]="pageSize"-->
+          <!--(nzPageSizeChange)="refreshData(true)">-->
+  <!--<thead nz-thead>-->
+  <!--<tr>-->
+    <!--<th nz-th><span>序号</span></th>-->
+    <!--<th nz-th><span>公司名称</span></th>-->
+    <!--<th nz-th><span>事项</span></th>-->
+    <!--<th nz-th><span>区域</span></th>-->
+    <!--<th nz-th><span>收费</span></th>-->
+    <!--<th nz-th><span>交接单列表</span></th>-->
+    <!--<th nz-th><span>负责人</span></th>-->
+    <!--<th nz-th><span>开始时间</span></th>-->
+    <!--<th nz-th><span>已用工作日</span></th>-->
+    <!--<th nz-th><span>进程</span></th>-->
+    <!--<th nz-th><span>状态</span></th>-->
+    <!--<th nz-th><span>备注</span></th>-->
+    <!--<th nz-th><span>操作</span></th>-->
+  <!--</tr>-->
+  <!--</thead>-->
+  <!--<tbody nz-tbody>-->
+  <!--<tr nz-tbody-tr *ngFor="let data of nzTable.data; let i = index">-->
+    <!--<td nz-td>{{i + 1}}</td>-->
+    <!--<td nz-td>{{data.field1}}</td>-->
+    <!--<td nz-td>{{data.field2}}</td>-->
+    <!--<td nz-td>{{data.field3}}</td>-->
+    <!--<td nz-td>{{data.field4}}</td>-->
+    <!--<td nz-td>{{data.field5}}</td>-->
+    <!--<td nz-td>{{data.field6}}</td>-->
+    <!--<td nz-td>{{data.field7}}</td>-->
+    <!--<td nz-td>{{data.field8}}</td>-->
+    <!--<td nz-td>{{data.field9}}</td>-->
+    <!--<td nz-td>-->
+      <!--<ng-container *ngIf="data.field10 == 1">-->
+        <!--<i class="anticon anticon-check-circle-o"></i>-->
+      <!--</ng-container>-->
+      <!--<ng-container *ngIf="data.field10 == 0">-->
+        <!--<i class="anticon anticon-close-circle-o"></i>-->
+      <!--</ng-container>-->
+    <!--</td>-->
+    <!--<td nz-td>{{data.field11}}</td>-->
+    <!--<td nz-td><a (click)="onClickTaskDetail(data)">详情</a></td>-->
+  <!--</tr>-->
+  <!--</tbody>-->
+<!--</nz-table>-->

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {TaskService} from './task.service';
 import {NzModalService} from 'ng-zorro-antd';
 import {TaskDetailComponent} from './task-detail/task-detail.component';
+import {Column} from '../../shared/shared.model';
 
 @Component({
   selector: 'app-task',
@@ -9,58 +10,23 @@ import {TaskDetailComponent} from './task-detail/task-detail.component';
   styleUrls: ['./task.component.css']
 })
 export class TaskComponent implements OnInit {
-  current = 1;
-  pageSize = 10;
-  total = 1;
-  dataSet = [];
-  loading = true;
-  sortValue = null;
-  searchText = '';
-  params = {};
-  modal = null;
-
-  sort(value) {
-    this.sortValue = value;
-    this.refreshData();
-  }
-
-  reset() {
-    this.refreshData(true);
-  }
+  columns: Column[] = [
+    {
+      title: '公司名称',
+      field: 'field1',
+    },
+    {
+      title: '事项',
+      field: 'field2',
+    },
+  ];
 
   constructor(
-    private taskService: TaskService,
-    private nzModalService: NzModalService,
   ) {
   }
 
-  refreshData(reset = false) {
-    if (reset) {
-      this.current = 1;
-    }
-    this.loading = true;
-    this.taskService.getTaskList(this.params, (res: any) => {
-      this.loading = false;
-      this.total = res.data.total;
-      this.dataSet = res.data.result;
-    });
-  }
-
   ngOnInit() {
-    this.refreshData();
   }
   onSearch() {
-    this.refreshData();
-  }
-  onClickTaskDetail(data) {
-    this.modal = this.nzModalService.open({
-      title: '任务详情',
-      content: TaskDetailComponent,
-      width: 1200,
-      footer: false,
-      componentParams: {
-        data: data
-      }
-    });
   }
 }

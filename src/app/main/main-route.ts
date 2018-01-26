@@ -15,6 +15,10 @@ export const mainRoutes: Routes = [
         loadChildren: 'app/main/settings/settings.module#SettingsModule'
       },
       {
+        path: 'dashboard',
+        loadChildren: 'app/main/dashboard/dashboard.module#DashboardModule'
+      },
+      {
         path: 'user',
         loadChildren: 'app/main/user/user.module#UserModule'
       },

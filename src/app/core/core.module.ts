@@ -13,6 +13,7 @@ import {CoreService} from './core.service';
 import {DataService} from './data.service';
 import {MessageService} from './message.service';
 import {ModalService} from './modal.service';
+import {UtilService} from './util.service';
 
 export function createTranslateHttpLoader(http: any) {
   return new TranslateHttpLoader(http, environment.deployPath + '/assets/i18n/', '.json');
@@ -41,7 +42,8 @@ export function createTranslateHttpLoader(http: any) {
     CoreService,
     DataService,
     MessageService,
-    ModalService
+    ModalService,
+    UtilService
   ]
 })
 export class CoreModule { }
