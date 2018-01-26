@@ -4,6 +4,7 @@ import {TranslateModule} from '@ngx-translate/core';
 import {NgZorroAntdModule} from 'ng-zorro-antd';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { TableComponent } from './component/table/table.component';
 
 @NgModule({
   imports: [
@@ -15,9 +16,11 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     // 第三方模块
     NgZorroAntdModule,
     TranslateModule,
-    // 本地模块
+    // 本地模TableComponent块
   ],
-  declarations: [],
+  declarations: [
+    TableComponent
+  ],
   exports: [
     // 官方模块
     CommonModule,
@@ -28,6 +31,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     NgZorroAntdModule,
     TranslateModule,
     // 本地模块
+    TableComponent,
   ]
 })
 export class SharedModule { }

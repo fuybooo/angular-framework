@@ -3,6 +3,6 @@ export const environment = {
   deployPath: '.',
   apiPath: '',
   apiPathChangeable: false,
-  isStatic: false,
+  isStatic: true,
   defaultLng: 'zh',
 };

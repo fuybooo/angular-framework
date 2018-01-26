@@ -1,0 +1,1094 @@
+/**
+font-img.scss需要的配置 */
+@font-face {
+  font-family: 'icomoon';
+  src: url('assets/fonts/icomoon.eot?o159ca');
+  src: url('assets/fonts/icomoon.eot?o159ca#iefix') format('embedded-opentype'),
+  url('assets/fonts/icomoon.ttf?o159ca') format('truetype'),
+  url('assets/fonts/icomoon.woff?o159ca') format('woff'),
+  url('assets/fonts/icomoon.svg?o159ca#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-allicon-"], [class*=" icon-allicon-"] {
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  display: inline-block;
+  vertical-align: -2px;
+  font-size: 16px;
+  text-align: center;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="icon-allicon-"]:before, [class*=" icon-allicon-"]:before {
+  display: block;
+}
+
+body {
+  color: $color-black-primary; // 覆盖ng-zorro中的颜色
+  font-size: 14px !important; // 覆盖ng-zorro中的字体大小
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑";
+  background: #fff;
+  transition: background 1s cubic-bezier(.075, .82, .165, 1);
+  word-break: break-all;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.text-tip {
+  color: $color-text-tip;
+}
+
+.anticon-click {
+  cursor: pointer;
+  &:hover {
+    color: $color-nav-hover;
+  }
+}
+
+.text-primary {
+  cursor: pointer;
+  color: $color-text-primary;
+  &:hover {
+    color: $color-text-primary-hover;
+  }
+}
+
+.text-primary-static {
+  color: $color-text-primary;
+}
+
+.text-diseditable {
+  color: $color-black-primary;
+}
+
+.text-version {
+  color: $color-text-version;
+}
+
+.text-aux {
+  color: $color-text-aux;
+}
+
+.text-warning {
+  color: $color-text-warning;
+}
+
+.text-green {
+  color: $color-green;
+}
+
+.middle-text-30 {
+  height: 30px;
+  line-height: 30px;
+}
+
+.table-layout-fixed {
+  table-layout: fixed; /* 表格固定布局，配合表格中的文本裁剪使用 */
+  table {
+    table-layout: fixed;
+  }
+}
+
+.td-ellipsis {
+  overflow: hidden;
+  display: inline-block;
+  white-space: nowrap;
+  word-break: keep-all;
+  text-overflow: ellipsis;
+}
+
+[type="file"] {
+  display: none !important;
+}
+
+.anticon-close-circle.import-close-circle {
+  cursor: pointer;
+  color: $color-gray-light-bg;
+  vertical-align: 4px;
+  font-size: 16px;
+  margin-left: 10px;
+  &:hover {
+    color: $color-gray-light-bg-hover;
+  }
+}
+
+//.close-circle {
+//  display: inline-block;
+//  background: $color-gray-light-bg;
+//  border-radius: 50%;
+//  text-align: center;
+//  line-height: 20px;
+//  font-size: 20px;
+//  font-weight: bold;
+//  color: $color-white;
+//  padding: 0;
+//  width: 20px;
+//  height: 20px;
+//  cursor: pointer;
+//  &:hover {
+//    background: $color-gray-light-bg-hover;
+//  }
+//}
+
+.img-icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: center no-repeat;
+  &.img-icon-file-csv {
+    background-image: url("assets/img/pic_excel.png");
+  }
+}
+
+.icon-hover-show {
+  .icon-hover {
+    visibility: hidden;
+  }
+  &:hover {
+    .icon-hover {
+      visibility: inherit;
+    }
+  }
+  &.active {
+    .icon-hover {
+      visibility: inherit;
+    }
+  }
+}
+
+// 文档图标
+.icon-file {
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  margin-right: 5px;
+  margin-left: 10px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 30px 30px;
+  &.small {
+    height: 18px;
+    width: 18px;
+    background-size: 18px 18px;
+  }
+  &.db-icon {
+    background-image: url("assets/img/icon-file/db.png");
+  }
+  &.doc {
+    background-image: url("assets/img/icon-file/doc-docx.png");
+  }
+  &.docx {
+    background-image: url("assets/img/icon-file/doc-docx.png");
+  }
+  &.dps {
+    background-image: url("assets/img/icon-file/dps.png");
+  }
+  &.epub {
+    background-image: url("assets/img/icon-file/epub.png");
+  }
+  &.et {
+    background-image: url("assets/img/icon-file/et.png");
+  }
+  &.folder {
+    background-image: url("assets/img/icon-file/folder.png");
+  }
+  &.gif {
+    background-image: url("assets/img/icon-file/gif.png");
+  }
+  &.jpg {
+    background-image: url("assets/img/icon-file/jpg-jpeg-png.png");
+  }
+  &.jpeg {
+    background-image: url("assets/img/icon-file/jpg-jpeg-png.png");
+  }
+  &.png {
+    background-image: url("assets/img/icon-file/jpg-jpeg-png.png");
+  }
+  &.md {
+    background-image: url("assets/img/icon-file/md.png");
+  }
+  &.moren {
+    background-image: url("assets/img/icon-file/moren.png");
+  }
+  &.mp3 {
+    background-image: url("assets/img/icon-file/mp3-wav.png");
+  }
+  &.wav {
+    background-image: url("assets/img/icon-file/mp3-wav.png");
+  }
+  &.mp4 {
+    background-image: url("assets/img/icon-file/mp4-avi.png");
+  }
+  &.avi {
+    background-image: url("assets/img/icon-file/mp4-avi.png");
+  }
+  &.pdf {
+    background-image: url("assets/img/icon-file/pdf.png");
+  }
+  &.ppt {
+    background-image: url("assets/img/icon-file/ppt-pptx.png");
+  }
+  &.pptx {
+    background-image: url("assets/img/icon-file/ppt-pptx.png");
+  }
+  &.ttf {
+    background-image: url("assets/img/icon-file/ttf-ttc.png");
+  }
+  &.ttc {
+    background-image: url("assets/img/icon-file/ttf-ttc.png");
+  }
+  &.txt {
+    background-image: url("assets/img/icon-file/txt.png");
+  }
+  &.txt2 {
+    background-image: url("assets/img/icon-file/txt2.png");
+  }
+  &.wps {
+    background-image: url("assets/img/icon-file/wps.png");
+  }
+  &.xls {
+    background-image: url("assets/img/icon-file/xls-xlsx.png");
+  }
+  &.xlsx {
+    background-image: url("assets/img/icon-file/xls-xlsx.png");
+  }
+  &.zip {
+    background-image: url("assets/img/icon-file/zip-rar-gz.png");
+  }
+  &.rar {
+    background-image: url("assets/img/icon-file/zip-rar-gz.png");
+  }
+  &.gz {
+    background-image: url("assets/img/icon-file/zip-rar-gz.png");
+  }
+}
+
+$order-width: 30px;
+.td-order {
+  width: 36px;
+  height: $order-width;
+  text-align: center;
+  line-height: $order-width;
+  display: block;
+  color: $color-text-aux;
+  background-color: $color-order-bg;
+  border-radius: 5px;
+}
+
+//.ant-table-tbody tr.active {
+//  & > td {
+//    background-color: $color-bg-table-hover;
+//  }
+//  &.tr-order {
+//    td {
+//      background-color: $color-order-tr-bg-active;
+//      color: $color-white;
+//      .text-primary {
+//        color: $color-white;
+//        &:hover {
+//          color: $color-white;
+//        }
+//      }
+//    }
+//  }
+//  .td-order {
+//    color: $color-white;
+//    background-color: $color-order-bg-active;
+//  }
+//}
+tr.active td {
+  background-color: $color-bg-table-active;
+}
+
+.ant-table-thead > tr > th.ant-table-selection-column,
+.ant-table-tbody > tr > td.ant-table-selection-column {
+  width: 25px !important;
+  min-width: 25px !important;
+}
+
+.ant-table-tbody > tr.active > td {
+  background-color: $color-bg-table-active;
+}
+
+.ant-table-tbody > tr.ant-table-row-hover > td,
+.ant-table-tbody > tr:not(.view):hover > td,
+.ant-table-tbody > tr.active:hover > td {
+  background-color: $color-bg-table-hover;
+}
+
+.ant-table-tbody > tr.tr-order > td {
+  transition: none !important;
+  color: $color-text-primary;
+  background-color: $color-gray-light;
+  .td-order {
+    background-color: $color-order-bg-hover;
+    color: $color-order-hover;
+  }
+}
+
+.ant-table-tbody > tr:hover.tr-order > td {
+  color: $color-black-primary;
+  background-color: $color-order-tr-bg-hover;
+  .text-primary {
+    color: $color-black-primary;
+  }
+  .td-order {
+    background-color: $color-order-bg-hover;
+    color: $color-order-hover;
+  }
+}
+
+.ant-table-tbody > tr.active.tr-order > td,
+.ant-table-tbody > tr.active.tr-order:hover > td {
+  background-color: $color-text-primary;
+  color: $color-white;
+  .text-primary {
+    color: $color-white;
+  }
+  .td-order {
+    background-color: $color-nav-deep;
+    color: $color-white;
+  }
+}
+
+.x-axis-scroll-table {
+  .ant-table-wrapper {
+    //width: 393px;
+    .ant-table-tbody > tr > td {
+      white-space: nowrap !important;
+      word-break: normal !important;
+    }
+  }
+}
+
+
+.gray-table {
+  td {
+    background-color: $color-gray-light;
+    &.active {
+      background-color: $color-bg-table-active;
+    }
+  }
+}
+
+.stripe-table {
+  &:nth-of-type(odd) {
+    td {
+      background-color: $color-white;
+    }
+  }
+  &:nth-of-type(even) {
+    td {
+      background-color: $color-stripe-tr-bg;
+    }
+  }
+  &.ant-table-tbody tr.application-item:not(.view) {
+    cursor: pointer;
+    &:hover, &.active, &.active:hover {
+      td {
+        background-color: $color-gray;
+      }
+    }
+  }
+}
+
+.bg-1 {
+  background-color: $c-1;
+}
+
+.bg-2 {
+  background-color: $c-2;
+}
+
+.bg-3 {
+  background-color: $c-3;
+}
+
+.bg-4 {
+  background-color: $c-4;
+}
+
+.bg-5 {
+  background-color: $c-5;
+}
+
+.bg-6 {
+  background-color: $c-6;
+}
+
+.bg-7 {
+  background-color: $c-7;
+}
+
+.bg-8 {
+  background-color: $c-8;
+}
+
+.bg-9 {
+  background-color: $c-9;
+}
+
+.bg-10 {
+  background-color: $c-10;
+}
+
+.c-11 {
+  color: $c-11;
+}
+
+.c-12 {
+  color: $c-12;
+}
+
+.bg-gray {
+  background-color: $color-application-bg;
+}
+
+.clearfix:before, .clearfix:after {
+  content: " ";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+  //width: 0;
+  //height: 0;
+  background-color: $color-white;
+}
+
+/*定义滚动条轨道 内阴影+圆角*/
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 0;
+  background-color: #F5F5F5;
+}
+
+/*定义滑块 内阴影+圆角*/
+::-webkit-scrollbar-thumb {
+  border-radius: 0;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+  background-color: $color-text-tip;
+}
+
+.common-box {
+  line-height: 28px;
+  padding: 10px 20px;
+  background-color: $color-gray-light;
+  border-bottom: $border;
+}
+
+.common-box-none {
+  border: none !important;
+}
+
+.common-row {
+  padding-bottom: 10px;
+  line-height: 24px;
+}
+
+.common-reset-margin {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.c-border {
+  border: $border;
+}
+
+.common-hr {
+  border-bottom: $border;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.common-title {
+  border-bottom: $border;
+  padding-left: 20px !important;
+  line-height: 28px;
+}
+
+.common-border-right {
+  border-right: $border;
+}
+
+.common-border-left-content {
+  border-left: $border;
+}
+
+//.common-border-left {
+//  border-left: $border;
+//}
+
+.common-none-border-left {
+  border-left: none !important;
+}
+
+//.common-none-border-right {
+//  border-right: none !important;
+//}
+
+.common-border-left-2 {
+  border-left: 2px solid $color-black-lighter;
+}
+
+.common-border-buttom {
+  border-bottom: 1px solid $color-black-lighter;
+}
+
+// 模拟输入框的边框
+.common-border {
+  border: 1px solid $color-input-border;
+  border-radius: 4px;
+  min-height: 70px;
+  i {
+    &::before {
+      color: $color-text-primary;
+    }
+  }
+}
+
+.common-gray-bg {
+  background-color: $color-gray-light;
+}
+
+.common-white-bg {
+  background-color: $color-white;
+}
+
+.common-blue-bg {
+  background-color: $color-blue-light;
+}
+
+.common-green-bg {
+  background-color: $color-green;
+}
+
+.common-input-wrap {
+  .ant-input-wrapper {
+    width: 120px;
+    display: inline-block;
+  }
+}
+
+.level-bg-1 {
+  background-color: $color-level-1;
+}
+
+.level-bg-2 {
+  background-color: $color-level-2;
+}
+
+.level-bg-3 {
+  background-color: $color-level-3;
+}
+
+.level-1 {
+  color: $color-level-1;
+}
+
+.level-2 {
+  color: $color-level-2;
+}
+
+.level-3 {
+  color: $color-level-3;
+}
+
+.badge-block {
+  display: inline-block;
+  height: 16px;
+  width: 16px;
+  border-radius: 5px;
+  vertical-align: -2px;
+}
+
+.badge-circle {
+  display: inline-block;
+  height: 8px;
+  width: 8px;
+  border-radius: 8px;
+}
+
+/* custom-form：移除图标按钮 */
+.dynamic-delete-button {
+  cursor: pointer;
+  position: relative;
+  top: 4px;
+  font-size: 16px;
+  color: #999;
+  transition: all .3s;
+}
+
+/* 鼠标移上后展示 */
+.show-mouse-hover-f-0 {
+  color: #f9f9f9;
+  &:hover {
+    color: #9c9a9a;
+  }
+}
+
+.view.ant-form-item-required:before {
+  content: '';
+}
+
+.list-widget {
+  width: 400px;
+  padding: 2px;
+  .ant-table-wrapper {
+    border: $border;
+    border-radius: 3px;
+    margin-top: 1px; // 为了解决border-top不出现的问题 2017-11-23
+  }
+  .ant-table-thead > tr > th, .ant-table-tbody > tr > td {
+    padding: 4px 8px;
+    height: 30px;
+  }
+}
+
+.nz-input-w120i {
+  nz-input {
+    width: 120px !important;
+  }
+}
+
+.nz-input-w180i {
+  nz-input {
+    width: 180px !important;
+  }
+}
+
+/* nz: select => options */
+.cdk-overlay-container {
+  z-index: 3000 !important;
+  .cdk-overlay-pane {
+    z-index: 3000 !important;
+  }
+}
+
+.app-store-table .ant-table-tbody > tr > td {
+  padding: 2px 5px;
+}
+
+.app-store-table .stripe-table {
+
+}
+
+.c-gray {
+  &:before {
+    color: $color-button-text;
+  }
+}
+
+// 表格中checkbox的padding
+.ant-table-tbody > tr > td.checkbox-td {
+  padding: 16px 2px 16px 20px !important;
+}
+
+.table-break tr > td {
+  word-break: break-all !important;
+}
+
+.table-td-height {
+  .ant-table-tbody tr {
+    &:hover {
+      td {
+        background-color: $color-bg-table-hover-lighter;
+      }
+    }
+    td {
+      padding: 0 8px;
+      height: 52px;
+    }
+  }
+}
+
+// 二维码放大
+.magnifier-hover {
+  &:hover {
+    width: 350px;
+    height: 350px;
+  }
+}
+
+// 白色table中的白色表格样式类
+.table-td-height44, .table-td-height {
+  .title-blue-color {
+    color: $color-gray-remote;
+  }
+  .ant-table-tbody tr {
+    &.active, &.active:hover {
+      tr {
+        background-color: $color-bg-table-hover-lighter;
+      }
+    }
+    &:hover {
+      td {
+        background-color: $color-gray;
+      }
+    }
+    &.active, &.active:hover {
+      td {
+        background-color: $color-black-lighter;
+      }
+    }
+    td {
+      //&:not(.pri20i):not(.pri15) {
+      //  padding: 0 10px !important;
+      //}
+      height: 44px !important;
+      &:first-child {
+        padding-left: 20px !important;
+        padding-right: 2px !important;
+      }
+    }
+  }
+}
+
+.table-td-height {
+  .ant-table-tbody tr td {
+    height: 54px !important;
+  }
+}
+
+// custom-form transfer
+
+.transfer-custom-form {
+  .ant-transfer-operation {
+    .ant-btn + .ant-btn {
+      margin-left: 0;
+    }
+    button {
+      padding: initial !important;
+      width: 40px!important;
+      height: 22px!important;
+      background-color: $color-white;
+      border-radius: 0 !important;
+      border: $border;
+      color: $color-text-aux;
+      //&:nth-of-type(1) {
+      //  margin-right: 0px;
+      //  color: #99999b;
+      //  border: 1px solid #979797 !important;
+      //  background-color: #ffffff !important;
+      //  border-radius: 0 !important;
+      //  width: 30px;
+      //  text-align: center;
+      //  margin-left: 8px;
+      //}
+      //&:nth-of-type(2) {
+      //  margin-left: 0px;
+      //  color: #99999b;
+      //  border: 1px solid #979797 !important;
+      //  background-color: #ffffff !important;
+      //  width: 30px;
+      //  border-radius: 0 !important;
+      //  text-align: center;
+      //  margin-left: 8px;
+      //}
+      .anticon-left {
+        font-size: 20px!important;
+        &:before {
+          content: "\e61c";
+        }
+      }
+      .anticon-right {
+        font-size: 20px!important;
+        &:before {
+          content: "\e61b";
+        }
+      }
+    }
+  }
+
+}
+
+.table-td-sort {
+  span {
+    position: relative;
+    left: 30px;
+    top: -4px;
+    .anticon-caret-up {
+      transform: scale(0.8);
+      position: absolute;
+      cursor: pointer;
+      top: 5px;
+      right: 10px;
+      color: $color-text-tip;
+    }
+    .anticon-caret-down {
+      transform: scale(0.8);
+      position: absolute;
+      cursor: pointer;
+      top: 12px;
+      right: 10px;
+      color: $color-text-tip;
+    }
+    &:hover {
+      .anticon-caret-down {
+        transform: scale(0.8);
+        display: inline-block;
+        top: 12px;
+        right: 10px;
+        color: $color-gray-remote;
+      }
+      .anticon-caret-up {
+        transform: scale(0.8);
+        display: inline-block;
+        top: 5px;
+        right: 10px;
+        color: $color-gray-remote;
+      }
+    }
+  }
+  &.asc {
+    span {
+      .anticon-caret-down {
+        display: none;
+      }
+      .anticon-caret-up {
+        top: 8px;
+      }
+    }
+  }
+  &.desc {
+    span {
+      .anticon-caret-up {
+        display: none;
+      }
+      .anticon-caret-down {
+        top: 10px;
+      }
+    }
+  }
+  &:hover {
+    &.asc {
+      span {
+        .anticon-caret-down {
+          display: inline-block;
+        }
+        .anticon-caret-up {
+          top: 5px;
+        }
+      }
+    }
+    &.desc {
+      span {
+        .anticon-caret-up {
+          display: inline-block;
+        }
+        .anticon-caret-down {
+          top: 12px;
+        }
+      }
+    }
+  }
+}
+
+// 删除图表hover时状态
+.delect-hover-red {
+  &:before {
+    color: $color-content-gray;
+  }
+  &:not(.permission-disabled):hover {
+    &:before {
+      color: $color-level-1;
+    }
+  }
+}
+
+// 编辑图标hover时状态
+.edit-hover-skyblue, .icon-allicon-19 {
+  &:before {
+    color: $color-content-gray;
+  }
+  &:not(.permission-disabled):link {
+    &:before {
+      color: $color-content-hover;
+    }
+  }
+  &:not(.permission-disabled):visited {
+    &:before {
+      color: $color-content-hover;
+    }
+  }
+  &:not(.permission-disabled):hover {
+    &:before {
+      color: $color-content-hover;
+    }
+  }
+  &:not(.permission-disabled):active {
+    &:before {
+      color: $color-content-hover;
+    }
+  }
+}
+
+// 不可编辑的状态样式
+.permission-disabled {
+  cursor: not-allowed !important;
+}
+
+// appPermission 中button包裹图标取消事件的样式
+.nb {
+  &:active, &:focus {
+    outline: none !important;
+    border: none !important;
+    background-color: transparent !important;
+  }
+  cursor: pointer;
+  border: none !important;
+  background-color: transparent !important;
+  &[disabled] {
+    cursor: not-allowed !important;
+    i {
+      cursor: not-allowed !important;
+      &:before {
+        color: $color-text-diseditable;
+      }
+    }
+    &:hover i:before {
+      color: $color-text-diseditable;
+    }
+  }
+}
+
+.uesr-table {
+  .ant-table-body {
+    .ant-table-tbody > tr > td {
+      &:not(.user-table-last) {
+        padding: 15px 8px !important;
+      }
+    }
+  }
+}
+
+// src/app/shared/custom-form/custom-form.component.html
+.file-app-img-cp {
+  margin-bottom: -10px;
+  & > div {
+    position: relative;
+    display: inline-block;
+    margin-top: 5px;
+    .app-img {
+      position: relative;
+      height: 120px;
+      width: 75px;
+      img {
+        position: absolute;
+        height: 120px;
+        width: 75px;
+        &.big {
+          height: 400px;
+          width: 250px;
+          z-index: 20;
+        }
+      }
+      .icon-71-85 {
+        display: none;
+        position: absolute;
+        top: 85px;
+        left: 0;
+        height: 35px;
+        width: 75px;
+        background-color: rgba(55, 55, 55, 0.6);
+        .icon-allicon-71 {
+          color: white;
+          margin: 10px 10px;
+          &:before {
+            color: white;
+          }
+        }
+        .icon-allicon-85 {
+          color: white;
+          margin: 10px 7px;
+        }
+      }
+      &:hover {
+        .icon-71-85 {
+          display: inline-block;
+        }
+      }
+    }
+    .app-upload {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 120px;
+      width: 75px;
+      background-color: rgba(55, 55, 55, 0.6);
+      nz-progress {
+        position: absolute;
+        top: 45px;
+        left: 17px
+      }
+    }
+  }
+}
+
+.file-app-img-cp-re {
+  margin-bottom: -10px;
+  & > div {
+    position: relative;
+    display: inline-block;
+    margin-top: 5px;
+    &.hover {
+      display: none;
+      cursor: pointer;
+      position: absolute;
+      top: 75px;
+      padding: 5px 128px;
+      font-size: 22px;
+      left: 0;
+      height: 40px;
+      width: 300px;
+      background-color: rgba(55, 55, 55, 0.3);
+    }
+  }
+  &:hover {
+    .hover {
+      display: inline-block;
+    }
+  }
+}
+
+.text-overflow {
+  vertical-align: -5px;
+  width: 84px;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.file-import-icon {
+  span.icon-file {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+  }
+}
+
+.policy-absolute{
+  position: absolute;
+  top: 8px;
+  right: 15px;
+}

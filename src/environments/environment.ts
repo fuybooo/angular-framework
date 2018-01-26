@@ -8,6 +8,6 @@ export const environment = {
   deployPath: '.',
   apiPath: 'http://192.168.7.108:8080',
   apiPathChangeable: false,
-  isStatic: false,
+  isStatic: true,
   defaultLng: 'zh',
 };
