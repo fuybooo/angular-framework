@@ -27,6 +27,7 @@
     "@ngx-translate/core": "^9.1.1",
     "@ngx-translate/http-loader": "^2.0.1",
     "@types/jquery": "^3.2.18",
+    "classlist.js": "^1.1.20150312",
     "core-js": "^2.5.3",
     "echarts": "^4.0.2",
     "gulp": "^3.9.1",
