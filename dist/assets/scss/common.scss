@@ -1,0 +1,69 @@
+.nz-input-number-w {
+  nz-input-number {
+    width: 100%;
+  }
+}
+
+.ant-btn + .ant-btn {
+  margin-left: 20px;
+}
+
+.cdk-overlay-container {
+  z-index: 99999 !important;
+}
+
+body {
+  color: $color-black-primary; // 覆盖ng-zorro中的颜色
+  font-size: 14px !important; // 覆盖ng-zorro中的字体大小
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑";
+  background: #fff;
+  transition: background 1s cubic-bezier(.075, .82, .165, 1);
+  word-break: break-all;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.text-tip {
+  color: $color-text-tip;
+}
+
+.anticon-click {
+  cursor: pointer;
+  &:hover {
+    color: $color-nav-hover;
+  }
+}
+
+.text-primary {
+  cursor: pointer;
+  color: $color-text-primary;
+  &:hover {
+    color: $color-text-primary-hover;
+  }
+}
+
+.text-primary-static {
+  color: $color-text-primary;
+}
+
+.text-diseditable {
+  color: $color-black-primary;
+}
+
+.text-aux {
+  color: $color-text-aux;
+}
+
+.text-warning {
+  color: $color-text-warning;
+}
+/**
+  操作列,按钮的间距
+ */
+.table-column-is-operate {
+  span + span {
+    margin-left: 5px;
+  }
+}
