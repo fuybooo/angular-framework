@@ -20,6 +20,10 @@ export class DataService {
       test_list: '/test_list',
       task_list: '/task_list',
       user_list: '/user_list',
+      done_task: '/done_task',
+      save_task: '/save_task',
+      save_user: '/save_user',
+      del_user: '/del_user',
     };
     for (const url in this.urls) {
       if (this.urls.hasOwnProperty(url)) {

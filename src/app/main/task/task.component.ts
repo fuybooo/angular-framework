@@ -19,6 +19,6 @@ export class TaskComponent implements OnInit {
   ngOnInit() {
   }
   onSearch() {
-    this.taskService.taskTableEvent.emit();
+    this.taskService.tableEvent.emit();
   }
 }

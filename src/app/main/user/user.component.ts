@@ -11,53 +11,17 @@ import {Router} from '@angular/router';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-
-  allChecked = false;
-  disabledButton = true;
-  checkedNumber = 0;
-  displayData: Array<any> = [];
-  dataSet = [];
-  indeterminate = false;
-  total = 1;
-  current = 1;
-  pageSize = 10;
-  searchText = '';
-  loading = false;
+  params = {
+    search: ''
+  };
   modal;
   constructor(
     private nzModalService: NzModalService,
     private userService: UserService,
-    private modalService: ModalService,
-    private router: Router,
   ) {
-  }
-  displayDataChange($event) {
-    this.displayData = $event;
-  }
-
-  refreshStatus() {
-    const allChecked = this.displayData.every(value => value.checked === true);
-    const allUnChecked = this.displayData.every(value => !value.checked);
-    this.allChecked = allChecked;
-    this.indeterminate = (!allChecked) && (!allUnChecked);
-    this.disabledButton = !this.dataSet.some(value => value.checked);
-    this.checkedNumber = this.dataSet.filter(value => value.checked).length;
-  }
-
-  checkAll(value) {
-    if (value) {
-      this.displayData.forEach(data => data.checked = true);
-    } else {
-      this.displayData.forEach(data => data.checked = false);
-    }
-    this.refreshStatus();
   }
 
   ngOnInit() {
-    this.userService.getUserList({}, (res: any) => {
-      this.dataSet = res.data.result;
-      this.total = res.data.total;
-    });
   }
   onCLickAdd() {
     this.modal = this.nzModalService.open({
@@ -67,28 +31,7 @@ export class UserComponent implements OnInit {
       footer: false,
     });
   }
-  onClickEdit(data) {
-    this.modal = this.nzModalService.open({
-      title: '编辑',
-      content: UserFormComponent,
-      width: 600,
-      footer: false,
-      componentParams: {
-        userData: data
-      }
-    });
-  }
-  onClickDel(data) {
-    this.modalService.confirmDelete(() => {
-      this.dataSet.splice(
-        this.dataSet.findIndex(value => value.username === data.username), 1
-      );
-    });
-  }
-  refreshData(flag = false) {
-
-  }
-  onSearch(value) {
-
+  onSearch() {
+    this.userService.tableEvent.emit();
   }
 }

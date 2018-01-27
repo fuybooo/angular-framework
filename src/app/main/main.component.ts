@@ -11,10 +11,32 @@ export class MainComponent implements OnInit {
   isCollapsed = false;
   isImgCollapsed = false;
   currentItem;
-  navList: any = [];
   currentUser = {
     name: '张三'
   };
+  navList: any = [
+    {
+      label: '新建任务',
+      code: 'taskCreate',
+      route: '/main',
+      iconCls: {'anticon-file-add': true},
+      isActive: false
+    },
+    {
+      label: '任务列表',
+      code: 'taskList',
+      route: '/main/taskList',
+      iconCls: {'anticon-bars': true},
+      isActive: true
+    },
+    {
+      label: '人员管理',
+      code: 'userManagement',
+      route: '/main/user',
+      iconCls: {'anticon-team': true},
+      isActive: false
+    },
+  ];
   constructor(
     private router: Router,
     private coreService: CoreService,
@@ -22,31 +44,12 @@ export class MainComponent implements OnInit {
 
   ngOnInit() {
     this.initNavList();
+    // 路由改变时,改变导航栏状态
+    this.coreService.routeChangeEvent.subscribe(() => {
+      this.initNavList();
+    });
   }
   initNavList() {
-    this.navList = [
-      {
-        label: '新建任务',
-        code: 'taskCreate',
-        route: '/main',
-        iconCls: {'anticon-file-add': true},
-        isActive: false
-      },
-      {
-        label: '任务列表',
-        code: 'taskList',
-        route: '/main/taskList',
-        iconCls: {'anticon-bars': true},
-        isActive: true
-      },
-      {
-        label: '人员管理',
-        route: '/main/user',
-        code: 'userManagement',
-        iconCls: {'anticon-team': true},
-        isActive: false
-      },
-    ];
     this.navList.forEach(item => {
       if (item.route === this.router.routerState.snapshot.url) {
         item.isActive = true;

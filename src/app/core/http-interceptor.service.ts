@@ -35,6 +35,12 @@ export class HttpInterceptorService implements HttpInterceptor {
         {setHeaders: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}}
       );
     }
+    // 在静态环境中,需要将post请求转化为get请求
+    if (environment.isStatic) {
+      if (req.method === 'POST') {
+        req = req.clone({method: 'GET'});
+      }
+    }
     return next.handle(req).do((res: HttpResponse<any>) => {
       // 请求成功
     }, (err: HttpErrorResponse) => {

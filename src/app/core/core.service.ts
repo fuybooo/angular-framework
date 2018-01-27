@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {EventEmitter, Injectable} from '@angular/core';
 import {environment} from '../../environments/environment';
 import {Observable} from 'rxjs/Observable';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
@@ -10,6 +10,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class CoreService {
   localStorage_lngKey = '_lng_';
+  routeChangeEvent = new EventEmitter();
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -35,6 +36,7 @@ export class CoreService {
       .filter(route => route.outlet === 'primary') as Observable<any>)
       .subscribe((route) => {
         this.titleService.setTitle(route.snapshot.data['title']);
+        this.routeChangeEvent.emit();
       });
   }
   logout() {

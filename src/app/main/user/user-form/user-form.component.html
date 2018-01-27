@@ -45,8 +45,8 @@
 
     <div nz-form-item nz-row [nzGutter]="20">
       <div nz-col [nzOffset]="6" [nzSpan]="12" nz-form-control class="tac">
-        <button nz-button [nzType]="'primary'"><span>确定</span></button>
-        <button nz-button [nzType]="'default'"><span>取消</span></button>
+        <button nz-button [nzType]="'default'" (click)="onClickCancel()"><span>取消</span></button>
+        <button nz-button [nzType]="'primary'" (click)="onClickOk()"><span>确定</span></button>
       </div>
     </div>
   </form>

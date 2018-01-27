@@ -2,6 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {TaskService} from '../task.service';
 import {NzModalSubject} from 'ng-zorro-antd';
+import {HttpRes} from '../../../core/core.model';
+import {MessageService} from '../../../core/message.service';
 
 @Component({
   selector: 'app-task-create',
@@ -71,7 +73,8 @@ export class TaskCreateComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private taskService: TaskService,
-    private subject: NzModalSubject
+    private subject: NzModalSubject,
+    private messageService: MessageService,
   ) { }
 
   ngOnInit() {
@@ -100,8 +103,25 @@ export class TaskCreateComponent implements OnInit {
   getFormControl(name) {
     return this.form.controls[name];
   }
+
+  /**
+   * 提交/保存任务
+   * type = 1 提交
+   * type = 2 保存
+   * @param type
+   */
   onClickSave(type) {
-    this.taskService.saveTask();
+    this.taskService.saveTask(type).subscribe((res: HttpRes) => {
+      if (res.code === '200') {
+        let text = '保存成功';
+        if (type === 2) {
+          text = '提交成功';
+        }
+        this.messageService.success(text);
+        this.taskService.tableEvent.emit({isTaskDetail: false});
+        this.subject.destroy();
+      }
+    });
   }
   onClickCancel() {
     // 只有在弹框时才出现

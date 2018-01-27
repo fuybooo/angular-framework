@@ -5,6 +5,9 @@ import {NzModalService} from 'ng-zorro-antd';
 import {TaskDetailComponent} from '../task-detail/task-detail.component';
 import {TaskCreateComponent} from '../task-create/task-create.component';
 import {TaskService} from '../task.service';
+import {HttpRes} from '../../../core/core.model';
+import {MessageService} from '../../../core/message.service';
+import {ModalService} from '../../../core/modal.service';
 
 @Component({
   selector: 'app-task-table',
@@ -76,9 +79,6 @@ export class TaskTableComponent implements OnInit, OnDestroy {
     {
       title: '操作',
       isOperate: true,
-      event: {
-        detail: true,
-      }
     },
   ];
   field5 = '';
@@ -101,19 +101,23 @@ export class TaskTableComponent implements OnInit, OnDestroy {
   constructor(
     public tableService: TableService,
     public taskService: TaskService,
-    private nzModalService: NzModalService
+    private nzModalService: NzModalService,
+    private messageService: MessageService,
+    private modalService: ModalService,
   ) { }
 
   ngOnInit() {
-    if (this.isTaskDetail) {
-      const operateCol = this.columns.find(v => v.isOperate);
-      operateCol.event.detail = false;
-      operateCol.event.submit = true;
-      operateCol.event.edit = true;
-    }
     this.initSearch();
-    this.subscript = this.taskService.taskTableEvent.subscribe(() => {
-      this.initSearch();
+    this.subscript = this.taskService.tableEvent.subscribe((event) => {
+      // 指定任务详情组件在event.isTaskDetail为false时不订阅该事件
+      if (event && event.isTaskDetail === false) {
+        // todo 目前只有两处用到该组件,如果将来用到该组件的地方增加了,此处的逻辑需要改变
+        if (!this.isTaskDetail) {
+          this.initSearch();
+        }
+      } else {
+        this.initSearch();
+      }
     });
   }
   initSearch() {
@@ -128,6 +132,9 @@ export class TaskTableComponent implements OnInit, OnDestroy {
     if (this.subscript) {
       this.subscript.unsubscribe();
     }
+    if (this.modal) {
+      this.modal.destroy();
+    }
   }
   onClickDetail(data) {
     this.modal = this.nzModalService.open({
@@ -136,9 +143,22 @@ export class TaskTableComponent implements OnInit, OnDestroy {
       width: 1200,
       footer: false,
       componentParams: {
-        // taskData: data
-        // test
-        taskData: {taskId: 1},
+        taskData: data,
+        subscript: this.subscript
+      }
+    });
+    this.modal.subscribe(event => {
+      if (event.type === 'done') {
+        this.modalService.popupConfirm('确定彻底完成该任务吗?', () => {
+          this.taskService.doneTask().subscribe((res: HttpRes) => {
+            if (res.code === '200') {
+              this.messageService.success('任务已完成!');
+              this.modal.destroy();
+              // 指定特定的组件触发订阅事件,这里不需要触发任务详情组件的订阅事件
+              this.taskService.tableEvent.emit({isTaskDetail: false});
+            }
+          });
+        });
       }
     });
   }
@@ -161,7 +181,15 @@ export class TaskTableComponent implements OnInit, OnDestroy {
       title: '选择下一步负责人',
       content: content,
       width: 400,
-      zIndex: 1030
+      zIndex: 1030,
+      onOk: () => {
+        this.taskService.saveTask(2).subscribe((res: HttpRes) => {
+          if (res.code === '200') {
+            this.messageService.success('提交成功');
+            this.taskService.tableEvent.emit();
+          }
+        });
+      }
     });
   }
 

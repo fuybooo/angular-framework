@@ -4,17 +4,16 @@ import {HttpClient} from '@angular/common/http';
 
 @Injectable()
 export class TaskService {
-  taskTableEvent = new EventEmitter();
+  tableEvent = new EventEmitter();
   constructor(
     private dataService: DataService,
     private http: HttpClient
   ) { }
-  getTaskList(params, callback) {
-     this.http.get(this.dataService.urls.task_list, this.dataService.getWholeParams(params)).subscribe((res: any) => {
-       callback(res);
-     });
-  }
-  saveTask() {
+  saveTask(type) {
     // 提交 保存
+    return this.http.post(this.dataService.urls.save_task, {});
+  }
+  doneTask() {
+    return this.http.post(this.dataService.urls.done_task, {});
   }
 }

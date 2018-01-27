@@ -4,7 +4,7 @@
       <div nz-form-label nz-col [nzSpan]="7">
         <label nz-form-item-required>公司名称</label>
       </div>
-      <div nz-col [nzSpan]="12" nz-form-control nzHasFeedback>
+      <div nz-col [nzSpan]="12" nz-form-control>
         <nz-input formControlName="field1" [nzType]="'text'" [nzPlaceHolder]="'请输入公司名称'" [nzSize]="'large'">
         </nz-input>
         <div nz-form-explain *ngIf="getFormControl('field1').dirty&&getFormControl('field1').hasError('required')">
@@ -140,13 +140,13 @@
     </div>
     <div nz-form-item nz-row [nzGutter]="20">
       <div nz-col [nzOffset]="6" [nzSpan]="12" nz-form-control class="tac">
-        <button nz-button [nzType]="'primary'" (click)="onClickSave(1)"
-                [disabled]="isEdit ? form.invalid : (form.invalid || !getFormControl('field5').value || !getFormControl('field6').value)"
-        ><span>提交</span></button>
+        <button *ngIf="isEdit" nz-button [nzType]="'default'" (click)="onClickCancel()"><span>取消</span></button>
         <button nz-button [nzType]="'primary'" (click)="onClickSave(2)"
                 [disabled]="isEdit ? form.invalid : (form.invalid || !getFormControl('field5').value)"
         ><span>保存</span></button>
-        <button *ngIf="isEdit" nz-button [nzType]="'default'" (click)="onClickCancel()"><span>取消</span></button>
+        <button nz-button [nzType]="'primary'" (click)="onClickSave(1)"
+                [disabled]="isEdit ? form.invalid : (form.invalid || !getFormControl('field5').value || !getFormControl('field6').value)"
+        ><span>提交</span></button>
       </div>
     </div>
   </form>

@@ -9,7 +9,7 @@
           <h1 class="login-title">任务管理系统</h1>
         </div>
         <div class="cb"></div>
-        <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="_submitForm()">
+        <form nz-form [formGroup]="form" class="login-form">
           <div nz-form-item>
             <div nz-form-control>
               <nz-input formControlName="userName" [nzPlaceHolder]="'请输入用户名'" [nzSize]="'large'">
@@ -18,7 +18,7 @@
                 </ng-template>
               </nz-input>
               <div nz-form-explain
-                   *ngIf="validateForm.controls.userName.dirty&&validateForm.controls.userName.hasError('required')">
+                   *ngIf="form.controls.userName.dirty&&form.controls.userName.hasError('required')">
                 请输入用户名
               </div>
             </div>
@@ -31,17 +31,17 @@
                 </ng-template>
               </nz-input>
               <div nz-form-explain
-                   *ngIf="validateForm.controls.password.dirty&&validateForm.controls.password.hasError('required')">
+                   *ngIf="form.controls.password.dirty&&form.controls.password.hasError('required')">
                 请输入密码
               </div>
             </div>
           </div>
           <div nz-form-item>
             <div nz-form-control>
-              <label nz-checkbox formControlName="remember">
-                <span>记住我</span>
-              </label>
-              <a class="login-form-forgot" class="login-form-forgot">忘记密码</a>
+              <!--<label nz-checkbox formControlName="remember">-->
+                <!--<span>记住我</span>-->
+              <!--</label>-->
+              <!--<a class="login-form-forgot" class="login-form-forgot">忘记密码</a>-->
               <button nz-button class="login-form-button" [nzType]="'primary'" [nzSize]="'large'" (click)="login()">登录</button>
             </div>
           </div>

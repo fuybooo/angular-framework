@@ -7,6 +7,7 @@ import {UserComponent} from './user.component';
 import {userRoutes} from './user-route';
 import { UserFormComponent } from './user-form/user-form.component';
 import {UserService} from './user.service';
+import { UserTableComponent } from './user-table/user-table.component';
 
 @NgModule({
   imports: [
@@ -20,6 +21,6 @@ import {UserService} from './user.service';
   entryComponents: [
     UserFormComponent
   ],
-  declarations: [UserComponent, UserFormComponent]
+  declarations: [UserComponent, UserFormComponent, UserTableComponent]
 })
 export class UserModule { }

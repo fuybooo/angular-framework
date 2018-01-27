@@ -124,16 +124,9 @@ var MainComponent = /*@__PURE__*/ (function () {
         this.coreService = coreService;
         this.isCollapsed = false;
         this.isImgCollapsed = false;
-        this.navList = [];
         this.currentUser = {
             name: '张三'
         };
-    }
-    MainComponent.prototype.ngOnInit = function () {
-        this.initNavList();
-    };
-    MainComponent.prototype.initNavList = function () {
-        var _this = this;
         this.navList = [
             {
                 label: '新建任务',
@@ -151,12 +144,23 @@ var MainComponent = /*@__PURE__*/ (function () {
             },
             {
                 label: '人员管理',
-                route: '/main/user',
                 code: 'userManagement',
+                route: '/main/user',
                 iconCls: { 'anticon-team': true },
                 isActive: false
             },
         ];
+    }
+    MainComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.initNavList();
+        // 路由改变时,改变导航栏状态
+        this.coreService.routeChangeEvent.subscribe(function () {
+            _this.initNavList();
+        });
+    };
+    MainComponent.prototype.initNavList = function () {
+        var _this = this;
         this.navList.forEach(function (item) {
             if (item.route === _this.router.routerState.snapshot.url) {
                 item.isActive = true;
