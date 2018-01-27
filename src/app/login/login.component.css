@@ -36,3 +36,26 @@
   background-color: #fff;
   box-shadow: 0 0 30px #00243e;
 }
+.login-logo-wrap {
+  width: 200px;
+  height: 65px;
+  position: relative;
+  float: left;
+}
+.login-logo {
+  position: absolute;
+  width: 200px;
+  height: calc(200 / 200 * 65px);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: url("../../assets/img/logo.png") center no-repeat;
+  background-size: 100%;
+}
+.login-title {
+  float: right;
+  text-align: center;
+  width: 280px;
+  height: 65px;
+  line-height: 65px;
+}

@@ -9,9 +9,7 @@ import {CoreService} from '../core/core.service';
 })
 export class MainComponent implements OnInit {
   isCollapsed = false;
-  mainName1 = '金色葵花';
-  mainName2 = '金';
-  mainName = this.mainName1;
+  isImgCollapsed = false;
   currentItem;
   navList: any = [];
   currentUser = {
@@ -61,9 +59,11 @@ export class MainComponent implements OnInit {
   switchSide() {
     this.isCollapsed = !this.isCollapsed;
     if (this.isCollapsed) {
-      this.mainName = this.mainName2;
+      // 图片延迟变小
+      setTimeout(() => this.isImgCollapsed = true, 150);
     } else {
-      setTimeout(() => this.mainName = this.mainName1, 100);
+      // 直接变大
+      this.isImgCollapsed = false;
     }
   }
   onClickItem(item) {

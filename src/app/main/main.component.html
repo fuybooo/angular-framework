@@ -2,7 +2,7 @@
   <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null" class="main-sider">
     <div class="logo-wrap">
       <!--{{mainName}}-->
-      <div class="logo" [class.logo-is-collapsed]="isCollapsed"></div>
+      <div class="logo" [class.logo-is-collapsed]="isImgCollapsed"></div>
     </div>
     <ul nz-menu [nzMode]="isCollapsed?'vertical':'inline'">
       <li nz-menu-item *ngFor="let item of navList" [nzSelected]="item.isActive" (click)="onClickItem(item)">
