@@ -59,4 +59,11 @@ a {
 .text-warning {
   color: $color-text-warning;
 }
-
+/**
+  操作列,按钮的间距
+ */
+.table-column-is-operate {
+  span + span {
+    margin-left: 5px;
+  }
+}

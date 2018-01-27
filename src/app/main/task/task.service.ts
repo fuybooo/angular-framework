@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
+import {EventEmitter, Injectable} from '@angular/core';
 import {DataService} from '../../core/data.service';
 import {HttpClient} from '@angular/common/http';
 
 @Injectable()
 export class TaskService {
-
+  taskTableEvent = new EventEmitter();
   constructor(
     private dataService: DataService,
     private http: HttpClient

@@ -4,9 +4,10 @@ export interface Column {
   width?: string | number;
   checkbox?: boolean;
   sortable?: boolean;
-  isOperate?: boolean;
   order?: 'asc' | 'desc';
-  formatter?: Function;
+  formatter?: (v?: string | number, i?: number, r?: any) => string;
   searchable?: boolean;
+  isOrder?: boolean;
+  isOperate?: boolean;
   event?: any;
 }

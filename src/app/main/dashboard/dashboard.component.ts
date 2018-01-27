@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Column} from '../../shared/shared.model';
+import {Column} from '../../shared/component/table/table.model';
+import {Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-dashboard',
@@ -29,17 +30,13 @@ export class DashboardComponent implements OnInit {
       field: 'field3',
       formatter: v => `${v}00000`
     },
-    {
-      title: '操作',
-      isOperate: true,
-      event: {
-        edit: true,
-        del: true
-      }
-    }
   ];
   data = [];
   url = 'test_list';
+  controlsConfig: {[key: string]: any} = {
+    name: ['', [Validators.maxLength(5)]],
+    pass: ['', [Validators.required]],
+  };
   constructor() { }
 
   ngOnInit() {
@@ -51,9 +48,6 @@ export class DashboardComponent implements OnInit {
       });
     }
     console.log(this.data);
-  }
-  edit(value, index, row) {
-    console.log('执行edit', value, index, row);
   }
 
 }
