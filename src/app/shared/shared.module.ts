@@ -6,6 +6,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ButtonClickDirective} from './directive/button-click.directive';
 import { TableComponent } from './component/table/table.component';
+import { TableTreeComponent } from './component/table-tree/table-tree.component';
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { TableComponent } from './component/table/table.component';
   ],
   declarations: [
     TableComponent,
+    TableTreeComponent,
     ButtonClickDirective
   ],
   exports: [
