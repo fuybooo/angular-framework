@@ -12,7 +12,7 @@ import {ModalService} from '../../../core/modal.service';
 @Component({
   selector: 'app-task-table',
   templateUrl: './task-table.component.html',
-  styleUrls: ['./task-table.component.css'],
+  styleUrls: ['./task-table.component.scss'],
   providers: [TableService]
 })
 export class TaskTableComponent implements OnInit, OnDestroy {

@@ -63,3 +63,4 @@
     ***
         1. 在每个模块都引入SharedModule, HttpInterceptorService
         2. 如果该模块中的组件被其他组件需要,则导出该组件,并在其他模块引入该模块即可
+8. 使用tableComponent处理所有的简单table,即没有操作按钮的table可以使用tableComponent,有操作按钮的则使用tableService.
