@@ -4,6 +4,7 @@ import {TaskService} from '../task.service';
 import {NzModalSubject} from 'ng-zorro-antd';
 import {HttpRes} from '../../../core/core.model';
 import {MessageService} from '../../../core/message.service';
+import {UserService} from '../../user/user.service';
 
 @Component({
   selector: 'app-task-create',
@@ -11,6 +12,7 @@ import {MessageService} from '../../../core/message.service';
   styleUrls: ['./task-create.component.scss']
 })
 export class TaskCreateComponent implements OnInit {
+  @Input() isEdit = false;
   @Input() taskData = {
     field1: '',
     field2: '',
@@ -24,48 +26,24 @@ export class TaskCreateComponent implements OnInit {
     field10: '',
     field11: '',
   };
-  @Input() isEdit = false;
   form: FormGroup;
-  field5Options = [
+  field5Options = [];
+  field6Options = [];
+  stateArr = [
     {
-      label: '张三',
-      value: 'zs'
+      label: '已完成',
+      value: '1',
+      checked: false,
     },
     {
-      label: '李四',
-      value: 'ls'
+      label: '未完成',
+      value: '2',
+      checked: false,
     },
     {
-      label: '王五',
-      value: 'ww'
-    },
-  ];
-  field6Options = [
-    {
-      label: '张三封',
-      value: 'zs'
-    },
-    {
-      label: '李四海',
-      value: 'ls'
-    },
-    {
-      label: '王五福',
-      value: 'ww'
-    },
-  ];
-  field10Options = [
-    {
-      label: '红',
-      value: 1
-    },
-    {
-      label: '黄',
-      value: 2
-    },
-    {
-      label: '绿',
-      value: 3
+      label: '未开始',
+      value: '3',
+      checked: true,
     },
   ];
   formatterYuan = value => `￥${value}`;
@@ -74,10 +52,13 @@ export class TaskCreateComponent implements OnInit {
     private fb: FormBuilder,
     private taskService: TaskService,
     private subject: NzModalSubject,
-    private messageService: MessageService,
+    private messageService: MessageService
   ) { }
 
   ngOnInit() {
+    if (!this.isEdit) {
+      this.userSearchChange();
+    }
     this.form = this.fb.group({
       field1: [this.taskData.field1, [Validators.required, Validators.maxLength(100)]],
       field2: [this.taskData.field2, [this.moneyNotEmpty(), Validators.maxLength(100)]],
@@ -126,5 +107,30 @@ export class TaskCreateComponent implements OnInit {
   onClickCancel() {
     // 只有在弹框时才出现
     this.subject.destroy();
+  }
+  userSearchChange(value?, type?) {
+    this.taskService.getUserList({
+      search: value || '',
+      pageNumber: 1,
+      pageSize: 10
+    }).subscribe((res: HttpRes) => {
+      if (res.code === '200') {
+        const result = res.data.result;
+        if (type === 1) {
+          this.field5Options = result;
+        } else if (type === 2) {
+          this.field6Options = result;
+        } else {
+          this.field5Options = result;
+          this.field6Options = result;
+        }
+      }
+    });
+  }
+  stateChange(state) {
+    state.checked = !state.checked;
+    this.stateArr.forEach((item: any) => {
+      item.checked = item.value === state.value;
+    });
   }
 }

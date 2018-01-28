@@ -25,7 +25,7 @@ export class UserTableComponent implements OnInit, OnDestroy {
     },
     {
       title: '用户名',
-      field: 'username',
+      field: 'userName',
     },
     {
       title: '姓名',

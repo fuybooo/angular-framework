@@ -16,4 +16,7 @@ export class TaskService {
   doneTask() {
     return this.http.post(this.dataService.urls.done_task, {});
   }
+  getUserList(params) {
+    return this.http.get(this.dataService.urls.user_list, this.dataService.getWholeParams(params));
+  }
 }

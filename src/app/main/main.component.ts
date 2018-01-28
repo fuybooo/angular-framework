@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {CoreService} from '../core/core.service';
+import {LoginService} from '../login/login.service';
 
 @Component({
   selector: 'app-main',
@@ -11,9 +12,7 @@ export class MainComponent implements OnInit {
   isCollapsed = false;
   isImgCollapsed = false;
   currentItem;
-  currentUser = {
-    name: '张三'
-  };
+  currentUser;
   navList: any = [
     {
       label: '新建任务',
@@ -43,6 +42,10 @@ export class MainComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.currentUser = LoginService.getLoginInfo();
+    if (this.currentUser && !this.currentUser.name) {
+      this.currentUser.name = 'Admin';
+    }
     this.initNavList();
     // 路由改变时,改变导航栏状态
     this.coreService.routeChangeEvent.subscribe(() => {

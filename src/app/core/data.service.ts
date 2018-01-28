@@ -17,7 +17,6 @@ export class DataService {
       login: '/login',
       dashboard: '/dashboard',
       settings: '/settings',
-      test_list: '/test_list',
       task_list: '/task_list',
       user_list: '/user_list',
       done_task: '/done_task',

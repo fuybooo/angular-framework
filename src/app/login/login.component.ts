@@ -28,6 +28,10 @@ export class LoginComponent implements OnInit {
   login() {
     this.loginService.login(this.form.value).subscribe((res: HttpRes) => {
       if (res.code === '200') {
+        // 测试
+        res.data.name = this.form.value.userName;
+        // 测试 end
+        LoginService.saveLoginInfo(res.data);
         this.router.navigate(['/main']);
       }
     });

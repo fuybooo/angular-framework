@@ -108,10 +108,14 @@
       </div>
       <div nz-col [nzSpan]="12" nz-form-control>
         <nz-select formControlName="field5" [nzSize]="'large'"
-                   [nzPlaceHolder]="'请选择人员'"
+                   [nzPlaceHolder]="'输入关键字查找...'"
                    [nzNotFoundContent]="'无法找到'"
-                   nzShowSearch>
-          <nz-option *ngFor="let option of field5Options" [nzLabel]="option.label" [nzValue]="option.value"></nz-option>
+                   nzAllowClear
+                   nzShowSearch
+                   nzKeepUnListOptions
+                   (nzSearchChange)="userSearchChange($event, 1)"
+        >
+          <nz-option *ngFor="let option of field5Options" [nzLabel]="option.realName+'('+ option.userName +')'" [nzValue]="option.id"></nz-option>
         </nz-select>
       </div>
     </div>
@@ -121,10 +125,14 @@
       </div>
       <div nz-col [nzSpan]="12" nz-form-control>
         <nz-select formControlName="field6" [nzSize]="'large'"
-                   [nzPlaceHolder]="'请选择人员'"
+                   [nzPlaceHolder]="'输入关键字查找...'"
                    [nzNotFoundContent]="'无法找到'"
-                   nzShowSearch>
-          <nz-option *ngFor="let option of field6Options" [nzLabel]="option.label" [nzValue]="option.value"></nz-option>
+                   nzAllowClear
+                   nzShowSearch
+                   nzKeepUnListOptions
+                   (nzSearchChange)="userSearchChange($event, 2)"
+        >
+          <nz-option *ngFor="let option of field6Options" [nzLabel]="option.realName+'('+ option.userName +')'" [nzValue]="option.id"></nz-option>
         </nz-select>
       </div>
     </div>
@@ -133,9 +141,18 @@
         <label nz-form-item-required>状态</label>
       </div>
       <div nz-col [nzSpan]="12" nz-form-control>
-        <nz-select formControlName="field10" [nzSize]="'large'" [nzPlaceHolder]="''">
-          <nz-option *ngFor="let option of field10Options" [nzLabel]="option.label" [nzValue]="option.value"></nz-option>
-        </nz-select>
+        <!--<nz-select formControlName="field10" [nzSize]="'large'" [nzPlaceHolder]="''">-->
+          <!--<nz-option *ngFor="let option of field10Options" [nzLabel]="option.label" [nzValue]="option.value"></nz-option>-->
+        <!--</nz-select>-->
+        <ng-container *ngFor="let state of stateArr">
+          <nz-checkable-tag
+            [class.checked-1]="state.checked && state.value === '1'"
+            [class.checked-2]="state.checked && state.value === '2'"
+            [class.checked-3]="state.checked && state.value === '3'"
+            [nzChecked]="state.checked" (nzChange)="stateChange(state)">
+            <span>{{state.label}}</span>
+          </nz-checkable-tag>
+        </ng-container>
       </div>
     </div>
     <div nz-form-item nz-row [nzGutter]="20">

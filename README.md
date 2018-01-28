@@ -1,7 +1,7 @@
 ## 重构/总结EMM
 1. 使用ng new 生成新的项目
       1. 安装包的过程产生各种问题
-      2. 解决方案: npm i @angular-devkit/core@0.0.28
+      2. 解决方案: npm i @angular-devkit/core@0.0.28 或者使用ncu升级
 2. 使项目支持sass
     .angular-cli.json 
     
@@ -64,3 +64,22 @@
         1. 在每个模块都引入SharedModule, HttpInterceptorService
         2. 如果该模块中的组件被其他组件需要,则导出该组件,并在其他模块引入该模块即可
 8. 使用tableComponent处理所有的简单table,即没有操作按钮的table可以使用tableComponent,有操作按钮的则使用tableService.
+9. 定义较多实用代码块
+    ***
+        1. con          console.log('');
+        2. res          (res: HttpRes) {
+                          if (res.code === '200') {
+                            
+                          }
+                        }
+        3. @            @import "../../assets/scss/vars.scss"
+10. 配置angular-cli 自动生成scss
+    ***
+        "defaults": {
+          - "styleExt": "css",
+          + "styleExt": "scss",
+            "component": {}
+          }
+    ***
+        在scss中导入 vars.scss 使用定义好的scss变量
+        @import "../../assets/scss/vars.scss"

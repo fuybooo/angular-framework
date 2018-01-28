@@ -32,11 +32,6 @@ export class DashboardComponent implements OnInit {
     },
   ];
   data = [];
-  url = 'test_list';
-  controlsConfig: {[key: string]: any} = {
-    name: ['', [Validators.maxLength(5)]],
-    pass: ['', [Validators.required]],
-  };
   constructor() { }
 
   ngOnInit() {
