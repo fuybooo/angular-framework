@@ -1,23 +1,22 @@
-<!--<nz-table class="content-table" #nzTable [nzAjaxData]="data" [nzIsPagination]="false"-->
-          <!--[nzLoading]="isLoading">-->
-  <!--<tbody nz-tbody>-->
-  <!--<ng-template ngFor let-data [ngForOf]="nzTable.data">-->
-    <!--<ng-template ngFor let-item [ngForOf]="expandDataCache[data.id]">-->
-      <!--<tr nz-tbody-tr *ngIf="(item.parent&&item.parent.expand)||!(item.parent)"-->
-          <!--[class.active]="item.isActive">-->
-        <!--<td nz-td [nzCheckbox]="true" [hidden]="isPopupMove" [class.checkbox-td]="!isPopupSelect">-->
-          <!--<label nz-checkbox [(ngModel)]="item.isChecked" (ngModelChange)="onClickChangeChecked()">-->
-          <!--</label>-->
-        <!--</td>-->
-        <!--<td nz-td class="cp" (click)="onClickDeviceGroup(item)">-->
-          <!--<nz-row-indent [nzIndentSize]="item.level"></nz-row-indent>-->
-          <!--<nz-row-expand-icon [(nzExpand)]="item.expand"-->
-                              <!--(nzExpandChange)="collapse(expandDataCache[data.id],item,$event)"-->
-                              <!--[nzShowExpand]="!item.isLastNode"></nz-row-expand-icon>-->
-          <!--<a>{{item.name}}</a>-->
-        <!--</td>-->
-      <!--</tr>-->
-    <!--</ng-template>-->
-  <!--</ng-template>-->
-  <!--</tbody>-->
-<!--</nz-table>-->
+<nz-table #nzTable [nzAjaxData]="tableTreeService.data" [nzIsPagination]="false"
+          [nzLoading]="tableTreeService.loading" [nzSize]="tableTreeService.tableSize">
+  <tbody nz-tbody>
+  <ng-template ngFor let-data [ngForOf]="nzTable.data">
+    <ng-template ngFor let-item [ngForOf]="tableTreeService.expandDataCache[data.id]">
+      <tr nz-tbody-tr *ngIf="(item.parent&&item.parent.expand)||!(item.parent)">
+        <td nz-td [nzCheckbox]="true" *ngIf="tableTreeService.isCheckbox">
+          <label nz-checkbox [(ngModel)]="item.isChecked" (ngModelChange)="tableTreeService.refreshStatus($event)">
+          </label>
+        </td>
+        <td nz-td>
+          <nz-row-indent [nzIndentSize]="item.level"></nz-row-indent>
+          <nz-row-expand-icon [(nzExpand)]="item.expand"
+                              (nzExpandChange)="tableTreeService.collapse(tableTreeService.expandDataCache[data.id],item,$event)"
+                              [nzShowExpand]="!item.isLastNode"></nz-row-expand-icon>
+          <span>{{item.name}}</span>
+        </td>
+      </tr>
+    </ng-template>
+  </ng-template>
+  </tbody>
+</nz-table>

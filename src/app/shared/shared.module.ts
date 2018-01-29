@@ -37,6 +37,7 @@ import { TableTreeComponent } from './component/table-tree/table-tree.component'
     // 本地
     ButtonClickDirective,
     TableComponent,
+    TableTreeComponent
   ]
 })
 export class SharedModule { }

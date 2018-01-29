@@ -83,3 +83,15 @@
     ***
         在scss中导入 vars.scss 使用定义好的scss变量
         @import "../../assets/scss/vars.scss"
+11. git 相关操作
+    ***
+        1.创建远程分支: git push origin <branch name>
+        2.删除远程分支: 
+          1.查看远程分支: git branch -a
+          2.删除远程分支: git push origin --delete <branch name>
+        3.本地代码关联到远程:
+          1.关联: git remote add origin git@server-name:path/repo-name.git
+          2.推送:
+            1.第一次推送: git push -u origin master
+            2.之后推送: git push origin master
+        4.从远程克隆: git clone

@@ -61,6 +61,9 @@ export class TableTreeService {
       }
     }
   }
+  refreshStatus($event) {
+
+  }
   private convertListToTree(sourceData: any[]) {
     const list = [];
     for (const item of sourceData) {

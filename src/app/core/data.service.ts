@@ -14,6 +14,9 @@ export class DataService {
       console.log('apiPath changed:', localStorage_apiPath);
     }
     this.urls = {
+      // test start
+      table_tree_test: '/table_tree_test',
+      // test_end
       login: '/login',
       dashboard: '/dashboard',
       settings: '/settings',

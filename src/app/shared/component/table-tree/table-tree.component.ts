@@ -5,7 +5,8 @@ import {TableTreeService} from './table-tree.service';
 @Component({
   selector: 'app-table-tree',
   templateUrl: './table-tree.component.html',
-  styleUrls: ['./table-tree.component.scss']
+  styleUrls: ['./table-tree.component.scss'],
+  providers: [TableTreeService]
 })
 export class TableTreeComponent implements OnInit {
   @Input() url;
@@ -15,7 +16,7 @@ export class TableTreeComponent implements OnInit {
   @Input() isCheckbox = true;
   @Input() tableSize = 'middle';
   constructor(
-    private tableTreeService: TableTreeService
+    public tableTreeService: TableTreeService
   ) { }
 
   ngOnInit() {
