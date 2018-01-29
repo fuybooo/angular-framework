@@ -18,13 +18,17 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑";
   background: #fff;
   transition: background 1s cubic-bezier(.075, .82, .165, 1);
-  word-break: break-all;
 }
 
 a {
   text-decoration: none !important;
 }
-
+.space {
+  word-spacing: 6px;
+}
+.space-clear {
+  word-spacing: 0;
+}
 .text-tip {
   color: $color-text-tip;
 }

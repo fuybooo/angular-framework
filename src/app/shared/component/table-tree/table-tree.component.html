@@ -2,7 +2,7 @@
           [nzLoading]="tableTreeService.loading" [nzSize]="tableTreeService.tableSize">
   <tbody nz-tbody>
   <ng-template ngFor let-data [ngForOf]="nzTable.data">
-    <ng-template ngFor let-item [ngForOf]="tableTreeService.expandDataCache[data.id]">
+    <ng-template ngFor let-item [ngForOf]="tableTreeService.expandDataCache[data[key]]">
       <tr nz-tbody-tr *ngIf="(item.parent&&item.parent.expand)||!(item.parent)">
         <td nz-td [nzCheckbox]="true" *ngIf="tableTreeService.isCheckbox">
           <label nz-checkbox [(ngModel)]="item.isChecked" (ngModelChange)="tableTreeService.refreshStatus($event)">
@@ -11,9 +11,9 @@
         <td nz-td>
           <nz-row-indent [nzIndentSize]="item.level"></nz-row-indent>
           <nz-row-expand-icon [(nzExpand)]="item.expand"
-                              (nzExpandChange)="tableTreeService.collapse(tableTreeService.expandDataCache[data.id],item,$event)"
+                              (nzExpandChange)="tableTreeService.collapse(tableTreeService.expandDataCache[data[key]],item,$event)"
                               [nzShowExpand]="!item.isLastNode"></nz-row-expand-icon>
-          <span>{{item.name}}</span>
+          <span>{{item[field]}}</span>
         </td>
       </tr>
     </ng-template>

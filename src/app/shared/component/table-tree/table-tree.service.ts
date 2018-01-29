@@ -13,6 +13,7 @@ export class TableTreeService {
   url;
   key = 'id';
   parentKey = 'parentId';
+  field = 'name';
   params: any = {};
   columns: Column[] = [];
   syncData = [];

@@ -15,6 +15,9 @@ export class TableTreeComponent implements OnInit {
   @Input() syncData = [];
   @Input() isCheckbox = true;
   @Input() tableSize = 'middle';
+  @Input() key = 'id';
+  @Input() parentKey = 'parentId';
+  @Input() field = 'name';
   constructor(
     public tableTreeService: TableTreeService
   ) { }
@@ -27,6 +30,9 @@ export class TableTreeComponent implements OnInit {
       syncData: this.syncData,
       isCheckbox: this.isCheckbox,
       tableSize: this.tableSize,
+      key: this.key,
+      parentKey: this.parentKey,
+      field: this.field,
     });
   }
 

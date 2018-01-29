@@ -13,7 +13,7 @@ import {MessageService} from '../../../core/message.service';
 export class UserFormComponent implements OnInit {
   @Input() operateType = 'add'; // edit
   @Input() userData = {
-    username: '',
+    userName: '',
     password: '',
     realName: '',
     permission: 1,
@@ -28,7 +28,7 @@ export class UserFormComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.fb.group({
-      username: [this.userData.username],
+      userName: [this.userData.userName],
       password: [this.userData.password],
       realName: [this.userData.realName],
       permission: [this.userData.permission],
