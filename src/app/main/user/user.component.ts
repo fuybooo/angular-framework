@@ -32,6 +32,7 @@ export class UserComponent implements OnInit {
     });
   }
   onSearch() {
+    // 触发表格的刷新
     this.userService.tableEvent.emit();
   }
 }

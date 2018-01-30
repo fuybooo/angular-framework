@@ -18,6 +18,7 @@ export class TableTreeComponent implements OnInit {
   @Input() key = 'id';
   @Input() parentKey = 'parentId';
   @Input() field = 'name';
+  @Input() lastNodeKey = 'isLastNode';
   constructor(
     public tableTreeService: TableTreeService
   ) { }
@@ -33,6 +34,7 @@ export class TableTreeComponent implements OnInit {
       key: this.key,
       parentKey: this.parentKey,
       field: this.field,
+      lastNodeKey: this.lastNodeKey,
     });
   }
 

@@ -62,7 +62,11 @@
   }
 }@media screen and (min-height: 572px) {
   .main-content {
-    height: calc(100vh - 172px);
+    // 如果ng-zorro全局字体大小为12px
+    //height: calc(100vh - 172px);
+    // 如果ng-zorro全局字体大小为14px
+    height: calc(100vh - 178px);
+
   }
 }
 .main-sider .ant-menu-item{
