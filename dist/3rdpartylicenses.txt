@@ -192,7 +192,7 @@ THE SOFTWARE.
 MIT
 MIT
 
-ng-zorro-antd@0.6.13
+ng-zorro-antd@0.6.12
 MIT
 MIT
 
