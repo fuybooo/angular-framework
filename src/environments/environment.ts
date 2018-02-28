@@ -6,7 +6,7 @@
 export const environment = {
   production: false,
   deployPath: '.',
-  apiPath: 'http://192.168.7.108:8080',
+  apiPath: 'http://210.12.202.144:8090/sf-webapp/api',
   apiPathChangeable: false,
   isStatic: true,
   defaultLng: 'zh',

@@ -38,7 +38,8 @@
                (ngModelChange)="tableService.refreshStatus($event)">
         </label>
       </td>
-      <td nz-td *ngFor="let col of columns">
+      <td nz-td *ngFor="let col of columns"
+          [ngStyle]="tableService.getTdStyle(col)">
         <ng-container *ngIf="col.formatter">
           <span [innerHTML]="tableService.getSecurityHtml(col, i, data)"></span>
         </ng-container>
@@ -87,7 +88,8 @@
                (ngModelChange)="tableService.refreshStatus($event)">
         </label>
       </td>
-      <td nz-td *ngFor="let col of columns">
+      <td nz-td *ngFor="let col of columns"
+          [ngStyle]="tableService.getTdStyle(col)">
         <ng-container *ngIf="col.formatter">
           <span [innerHTML]="tableService.getSecurityHtml(col, i, data)"></span>
         </ng-container>

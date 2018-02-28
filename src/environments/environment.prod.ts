@@ -4,8 +4,8 @@
 export const environment = {
   production: true,
   deployPath: 'angular-framework',
-  apiPath: '',
+  apiPath: 'http://210.12.202.144:8090/sf-webapp/api',
   apiPathChangeable: false,
-  isStatic: true,
+  isStatic: false,
   defaultLng: 'zh',
 };
