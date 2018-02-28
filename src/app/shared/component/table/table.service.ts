@@ -13,12 +13,12 @@ export class TableService {
   loading = false;
   total = 1;
   current = 1;
-  pageSize = 10;
+  per_page = 10;
   sortMap = {};
   url;
   params: any = {
-    pageSize: 10,
-    pageNumber: 1,
+    per_page: 10,
+    page: 1,
     sortField: '',
     sortOrder: ''
   };
@@ -82,8 +82,8 @@ export class TableService {
     }
     this.loading = true;
     if (!this.syncData.length) {
-      this.params.pageNumber = this.current;
-      this.params.pageSize = this.pageSize;
+      this.params.page = this.current;
+      this.params.per_page = this.per_page;
     }
     this.http.get(this.dataService.urls[this.url], this.dataService.getWholeParams(this.params)).subscribe((res: any) => {
       this.loading = false;
@@ -116,6 +116,21 @@ export class TableService {
   }
   getSecurityHtml(col, i, data) {
     return this.domSanitizer.bypassSecurityTrustHtml(col.formatter(data[col.field], i, data));
+  }
+  getTdStyle(col) {
+    if (col.width) {
+      if (typeof col.width === 'number') {
+        return {
+          width: `${col.width}px`
+        };
+      } else if (typeof col.width === 'string') {
+        return {
+          width: col.width
+        };
+      }
+    } else {
+      return {};
+    }
   }
 
 }

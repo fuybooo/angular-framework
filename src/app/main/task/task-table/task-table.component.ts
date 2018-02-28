@@ -8,6 +8,7 @@ import {TaskService} from '../task.service';
 import {HttpRes} from '../../../core/core.model';
 import {MessageService} from '../../../core/message.service';
 import {ModalService} from '../../../core/modal.service';
+import moment = require('moment');
 
 @Component({
   selector: 'app-task-table',
@@ -24,46 +25,60 @@ export class TaskTableComponent implements OnInit, OnDestroy {
     {
       title: '序号',
       isOrder: true,
+      width: '4%'
     },
     {
       title: '公司名称',
-      field: 'field1',
+      field: 'companyname',
+      width: '8%'
     },
     {
       title: '事项',
-      field: 'field2',
+      field: 'taskname',
+      width: '8%'
     },
     {
       title: '区域',
-      field: 'field3',
+      field: 'district',
+      width: '8%'
     },
     {
-      title: '收费',
-      field: 'field4',
+      title: '金额',
+      field: 'amount',
+      width: '8%'
     },
     {
       title: '交接单列表',
-      field: 'field5',
+      field: 'detaillist',
+      width: '9%'
     },
     {
       title: '负责人',
-      field: 'field6',
+      field: 'liablename',
+      width: '8%'
     },
     {
       title: '开始时间',
-      field: 'field7',
+      field: 'begindate',
+      width: '11%',
+      formatter: (v) => {
+        return v ? `<span>${moment(v).format('YYYY-MM-DD HH:mm:ss')}</span>` : '';
+      }
     },
     {
       title: '已用工作日',
-      field: 'field8',
+      field: 'enddate',
+      width: '8%'
     },
     {
       title: '进程',
-      field: 'field9',
+      field: 'process',
+      width: '8%'
     },
     {
       title: '状态',
-      field: 'field10',
+      field: 'status',
+      width: '6%',
       formatter: (v) => {
         let res = '<i class="anticon anticon-close-circle-o"></i>';
         if (v === 1) {
@@ -74,7 +89,8 @@ export class TaskTableComponent implements OnInit, OnDestroy {
     },
     {
       title: '备注',
-      field: 'field11',
+      field: 'remark',
+      width: '10%'
     },
     {
       title: '操作',

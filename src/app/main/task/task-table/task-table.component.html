@@ -37,7 +37,10 @@
              (ngModelChange)="tableService.refreshStatus($event)">
       </label>
     </td>
-    <td nz-td *ngFor="let col of columns;" [ngClass]="{'table-column-is-operate': col.isOperate}">
+    <td nz-td *ngFor="let col of columns;"
+        [ngClass]="{'table-column-is-operate': col.isOperate}"
+        [ngStyle]="tableService.getTdStyle(col)"
+    >
       <ng-container *ngIf="col.isOrder">
         <span>{{i + 1}}</span>
       </ng-container>

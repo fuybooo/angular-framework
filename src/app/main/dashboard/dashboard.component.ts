@@ -32,6 +32,7 @@ export class DashboardComponent implements OnInit {
     },
   ];
   data = [];
+  list: any[] = [];
   constructor() { }
 
   ngOnInit() {
@@ -43,6 +44,15 @@ export class DashboardComponent implements OnInit {
       });
     }
     console.log(this.data);
+
+    for (let i = 0; i < 20; i++) {
+      this.list.push({
+        key: i.toString(),
+        title: `content${i + 1}`,
+        disabled: i % 3 < 1,
+      });
+    }
+
   }
 
 }
