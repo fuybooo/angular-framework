@@ -1,9 +1,0 @@
-<div nz-row class="mb10">
-  <div nz-col [nzSpan]="8">
-    <nz-input [nzType]="'search'" [nzPlaceHolder]="'输入内容进行搜索...'" [(ngModel)]="params.search" (nzOnSearch)="onSearch()"></nz-input>
-  </div>
-  <div nz-col [nzSpan]="16" class="tar pri50i">
-    <button nz-button [nzType]="'primary'" (click)="onCLickAdd()"><span>添加</span></button>
-  </div>
-</div>
-<app-user-table [params]="params"></app-user-table>
