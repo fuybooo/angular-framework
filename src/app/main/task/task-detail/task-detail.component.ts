@@ -22,7 +22,7 @@ export class TaskDetailComponent implements OnInit, OnDestroy {
   ) {
   }
   ngOnInit() {
-    this.params.taskId = this.taskData.taskId;
+    this.params.taskkey = this.taskData.taskkey;
   }
   ngOnDestroy() {
     if (this.subscript) {

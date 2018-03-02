@@ -68,7 +68,7 @@
     ***
         1. con          console.log('');
         2. res          (res: HttpRes) {
-                          if (res.code === '200') {
+                          if (res.code === 200) {
                             
                           }
                         }

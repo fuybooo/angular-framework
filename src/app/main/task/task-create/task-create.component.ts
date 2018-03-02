@@ -5,6 +5,7 @@ import {NzModalSubject} from 'ng-zorro-antd';
 import {HttpRes} from '../../../core/core.model';
 import {MessageService} from '../../../core/message.service';
 import {UserService} from '../../user/user.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-task-create',
@@ -14,17 +15,16 @@ import {UserService} from '../../user/user.service';
 export class TaskCreateComponent implements OnInit {
   @Input() isEdit = false;
   @Input() taskData = {
-    field1: '',
-    field2: '',
-    field3: '',
-    field4: '',
-    field5: '',
-    field6: '',
-    field7: '',
-    field8: '',
-    field9: '',
-    field10: '',
-    field11: '',
+    id: '',
+    taskname: '',
+    companyname: '',
+    amount: '',
+    district: '',
+    process: '',
+    detaillist: '',
+    remark: '',
+    liableid: '',
+    nextliableid: '',
   };
   form: FormGroup;
   field5Options = [];
@@ -51,7 +51,9 @@ export class TaskCreateComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private taskService: TaskService,
+    private userService: UserService,
     private subject: NzModalSubject,
+    private router: Router,
     private messageService: MessageService
   ) { }
 
@@ -60,16 +62,17 @@ export class TaskCreateComponent implements OnInit {
       this.userSearchChange();
     }
     this.form = this.fb.group({
-      field1: [this.taskData.field1, [Validators.required, Validators.maxLength(100)]],
-      field2: [this.taskData.field2, [this.moneyNotEmpty(), Validators.maxLength(100)]],
-      field3: [this.taskData.field3, [Validators.required, Validators.maxLength(100)]],
-      field4: [this.taskData.field4, [Validators.required, Validators.maxLength(100)]],
-      field5: [this.taskData.field5, [Validators.required, Validators.maxLength(100)]],
-      field6: [this.taskData.field6, [Validators.maxLength(100)]],
-      field7: [this.taskData.field7, [Validators.required, Validators.maxLength(100)]],
-      field8: [this.taskData.field8, [Validators.required, Validators.maxLength(100)]],
-      field9: [this.taskData.field9, [Validators.maxLength(100)]],
-      field10: [this.taskData.field10],
+      taskname: [this.taskData.taskname, [Validators.required, Validators.maxLength(100)]],
+      companyname: [this.taskData.companyname, [this.moneyNotEmpty(), Validators.maxLength(100)]],
+      amount: [this.taskData.amount, [Validators.required, Validators.maxLength(100)]],
+      district: [this.taskData.district, [Validators.required, Validators.maxLength(100)]],
+      process: [this.taskData.process, [Validators.required, Validators.maxLength(100)]],
+      remark: [this.taskData.remark, [Validators.maxLength(100)]],
+      liableid: [this.taskData.liableid, [Validators.required, Validators.maxLength(100)]],
+      detaillist: [this.taskData.detaillist, [Validators.required, Validators.maxLength(100)]],
+      nextliableid: [this.taskData.nextliableid, [Validators.maxLength(100)]],
+      // field9: [this.taskData.field9, [Validators.maxLength(100)]],
+      // field10: [this.taskData.field10],
     });
   }
   moneyNotEmpty() {
@@ -92,15 +95,30 @@ export class TaskCreateComponent implements OnInit {
    * @param type
    */
   onClickSave(type) {
-    this.taskService.saveTask(type).subscribe((res: HttpRes) => {
-      if (res.code === '200') {
+    let params: any = {
+      method: 'post',
+      issubmit: type,
+      status: 0
+    };
+    if (this.isEdit) {
+      params = {
+        method: 'put',
+        id: this.taskData.id,
+        issubmit: type,
+      };
+    }
+    this.taskService.postTasks(Object.assign({}, this.form.value, params)).subscribe((res: HttpRes) => {
+      if (res.code === 0) {
+      // if (res.code === 200) {
         let text = '保存成功';
         if (type === 2) {
           text = '提交成功';
         }
         this.messageService.success(text);
         this.taskService.tableEvent.emit({isTaskDetail: false});
+        this.form.reset();
         this.subject.destroy();
+        this.router.navigate(['/main/taskList']);
       }
     });
   }
@@ -109,12 +127,12 @@ export class TaskCreateComponent implements OnInit {
     this.subject.destroy();
   }
   userSearchChange(value?, type?) {
-    this.taskService.getUserList({
+    this.userService.getUsers({
       search: value || '',
-      pageNumber: 1,
-      pageSize: 10
+      page: 1,
+      per_page: 10
     }).subscribe((res: HttpRes) => {
-      if (res.code === '200') {
+      if (res.code === 200) {
         const result = res.data.result;
         if (type === 1) {
           this.field5Options = result;

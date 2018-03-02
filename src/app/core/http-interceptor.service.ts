@@ -26,7 +26,7 @@ export class HttpInterceptorService implements HttpInterceptor {
   };
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // 在非生产环境允许跨域
-    if (!environment.production) {
+    if (environment.allowCORS) {
       req = req.clone({withCredentials: true});
     }
     // 在EMM项目中,需要将post请求的参数格式化

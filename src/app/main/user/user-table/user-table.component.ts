@@ -17,7 +17,7 @@ import {MessageService} from '../../../core/message.service';
 export class UserTableComponent implements OnInit, OnDestroy {
   @Input() isCheckbox = false;
   @Input() params = {};
-  @Input() url = 'user_list';
+  @Input() url = 'users';
   columns: Column[] = [
     {
       title: '序号',
@@ -25,20 +25,20 @@ export class UserTableComponent implements OnInit, OnDestroy {
     },
     {
       title: '用户名',
-      field: 'userName',
+      field: 'username',
     },
     {
       title: '姓名',
-      field: 'realName',
+      field: 'displayname',
     },
     {
       title: '权限',
-      field: 'permission',
+      field: 'role',
       formatter: v => {
         let res = '';
-        if (v === 1) {
+        if (v === '1') {
           res = '普通用户';
-        } else if (v === 2) {
+        } else if (v === '2') {
           res = '管理员';
         }
         return res;
@@ -95,8 +95,13 @@ export class UserTableComponent implements OnInit, OnDestroy {
   }
   onClickDel(data) {
     this.modal = this.modalService.confirmDelete(() => {
-      this.userService.delUser({id: data.userId}).subscribe((res: HttpRes) => {
-        if (res.code === '200') {
+      this.userService.postUsers({
+        method: 'put',
+        status: 0,
+        id: data.id
+      }).subscribe((res: HttpRes) => {
+        // if (res.code === 200) {
+        if (res.code === 0) {
           this.messageService.success('删除成功');
           this.userService.tableEvent.emit();
         }

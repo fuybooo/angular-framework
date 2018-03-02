@@ -9,12 +9,15 @@ export class TaskService {
     private dataService: DataService,
     private http: HttpClient
   ) { }
-  saveTask(type) {
-    // 提交 保存
-    return this.http.post(this.dataService.urls.save_task, {});
+  postTasks(params) {
+    return this.http.post(this.dataService.urls.tasks, params);
   }
-  doneTask() {
-    return this.http.post(this.dataService.urls.done_task, {});
+  saveTask(params) {
+    // 提交 保存
+    return this.http.post(this.dataService.urls.save_task, params);
+  }
+  doneTask(params) {
+    return this.http.post(this.dataService.urls.done_task, params);
   }
   getUserList(params) {
     return this.http.get(this.dataService.urls.user_list, this.dataService.getWholeParams(params));

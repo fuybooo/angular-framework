@@ -1,0 +1,8 @@
+{
+  "/proxy": {
+    "target": "http://210.12.202.144:8090",
+    "pathRewrite": {
+      "/proxy": "/sf-webapp/api"
+    }
+  }
+}

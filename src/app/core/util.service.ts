@@ -89,7 +89,7 @@ export class UtilService {
         _this.http.get(url, {params: _this.dataService.getParams(Object.assign({
             [field]: control.value.trim() || ''
           }, extend))}).subscribe((res: any) => {
-          if (res.code === '200') {
+          if (res.code === 200) {
             if (res.data.isExist) {
               observer.next({error: true, duplicated: true});
             } else {

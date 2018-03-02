@@ -7,5 +7,6 @@ export const environment = {
   apiPath: 'http://210.12.202.144:8090/sf-webapp/api',
   apiPathChangeable: false,
   isStatic: false,
+  allowCORS: true,
   defaultLng: 'zh',
 };

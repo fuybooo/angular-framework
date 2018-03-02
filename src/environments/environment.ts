@@ -7,7 +7,9 @@ export const environment = {
   production: false,
   deployPath: '.',
   apiPath: 'http://210.12.202.144:8090/sf-webapp/api',
+  // apiPath: '/proxy', // 使用代理
   apiPathChangeable: false,
-  isStatic: true,
+  isStatic: false,
+  allowCORS: true,
   defaultLng: 'zh',
 };

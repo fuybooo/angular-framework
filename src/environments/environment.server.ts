@@ -7,5 +7,6 @@ export const environment = {
   apiPath: '',
   apiPathChangeable: true,
   isStatic: true,
+  allowCORS: true,
   defaultLng: 'zh',
 };

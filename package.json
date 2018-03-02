@@ -5,6 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve -o",
+    "start-proxy": "ng serve -o --proxy-config proxy.conf.json",
     "start-prod": "ng serve --env=prod -o",
     "server": "lite-server",
     "test": "ng test",

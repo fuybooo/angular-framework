@@ -19,8 +19,8 @@ export class TableService {
   params: any = {
     per_page: 10,
     page: 1,
-    sortField: '',
-    sortOrder: ''
+    // sortField: '',
+    // sortOrder: ''
   };
   columns: Column[] = [];
   syncData = [];
@@ -87,9 +87,9 @@ export class TableService {
     }
     this.http.get(this.dataService.urls[this.url], this.dataService.getWholeParams(this.params)).subscribe((res: any) => {
       this.loading = false;
-      if (res.code === '200') {
+      if (res.code === 200) {
         // 远程环境中
-        this.displayData = this.dataSet = res.data.result;
+        this.displayData = this.dataSet = res.data.result || [];
         this.total = res.data.total;
       }
     });

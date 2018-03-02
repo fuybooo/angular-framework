@@ -55,10 +55,10 @@
           <span><a (click)="onClickDetail(data)">详情</a></span>
         </ng-container>
         <ng-container *ngIf="isTaskDetail">
-          <ng-container *ngIf="data.field10 === 1">
+          <ng-container *ngIf="data.status === '1'">
             <span>已提交</span>
           </ng-container>
-          <ng-container *ngIf="data.field10 === 0">
+          <ng-container *ngIf="data.status !== '1'">
             <span><a (click)="onClickEdit(data)">编辑</a></span>
             <span><a (click)="onClickSubmit(data, content)">提交</a></span>
           </ng-container>
@@ -70,10 +70,10 @@
   </tbody>
 </nz-table>
 <ng-template #content>
-  <nz-select [(ngModel)]="field5" [nzSize]="'large'"
+  <nz-select [(ngModel)]="liableid" [nzSize]="'large'"
              [nzPlaceHolder]="'请选择人员'"
              [nzNotFoundContent]="'无法找到'"
              nzShowSearch class="w">
-    <nz-option *ngFor="let option of field5Options" [nzLabel]="option.label" [nzValue]="option.value"></nz-option>
+    <nz-option *ngFor="let option of liablenameOptions" [nzLabel]="option.label" [nzValue]="option.value"></nz-option>
   </nz-select>
 </ng-template>

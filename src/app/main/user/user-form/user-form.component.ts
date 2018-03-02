@@ -13,10 +13,11 @@ import {MessageService} from '../../../core/message.service';
 export class UserFormComponent implements OnInit {
   @Input() operateType = 'add'; // edit
   @Input() userData = {
-    userName: '',
+    id: 0,
+    username: '',
     password: '',
-    realName: '',
-    permission: 1,
+    displayname: '',
+    role: '1',
   };
   form: FormGroup;
   constructor(
@@ -28,18 +29,28 @@ export class UserFormComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.fb.group({
-      userName: [this.userData.userName],
+      username: [this.userData.username],
       password: [this.userData.password],
-      realName: [this.userData.realName],
-      permission: [this.userData.permission],
+      displayname: [this.userData.displayname],
+      role: [this.userData.role],
     });
   }
   onClickCancel() {
     this.subject.destroy();
   }
   onClickOk() {
-    this.userService.saveUser(Object.assign(this.form.value, {operateType: this.operateType})).subscribe((res: HttpRes) => {
-      if (res.code === '200') {
+    let params: any = {
+      method: 'post'
+    };
+    if (this.operateType === 'edit') {
+      params = {
+        method: 'put',
+        id: this.userData.id
+      };
+    }
+    this.userService.postUsers(Object.assign({}, this.form.value, params)).subscribe((res: HttpRes) => {
+      // if (res.code === 200) {
+      if (res.code === 0) {
         let text = '用户添加成功';
         if (this.operateType === 'edit') {
           text = '用户修改成功';

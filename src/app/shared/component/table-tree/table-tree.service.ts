@@ -42,7 +42,7 @@ export class TableTreeService {
     if (this.url) {
       this.http.get(this.dataService.urls[this.url], this.dataService.getWholeParams(this.params)).subscribe((res: any) => {
         this.loading = false;
-        if (res.code === '200') {
+        if (res.code === 200) {
           this.sourceData = res.data.result;
           this.getExpandDataCache(this.sourceData);
         }

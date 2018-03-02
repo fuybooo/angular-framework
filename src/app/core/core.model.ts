@@ -1,5 +1,5 @@
 export interface HttpRes {
-  code: string;
+  code: number;
   msg: string;
   data: any | {
     result?: Array<any>,
