@@ -8,7 +8,7 @@ import {TaskService} from '../task.service';
 import {HttpRes} from '../../../core/core.model';
 import {MessageService} from '../../../core/message.service';
 import {ModalService} from '../../../core/modal.service';
-import moment = require('moment');
+import * as moment from 'moment';
 import {UserService} from '../../user/user.service';
 
 @Component({

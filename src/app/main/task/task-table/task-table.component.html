@@ -6,7 +6,7 @@
           [nzLoading]="tableService.loading"
           [nzTotal]="tableService.total"
           [(nzPageIndex)]="tableService.current"
-          [(nzPageSize)]="tableService.pageSize"
+          [(nzPageSize)]="tableService.per_page"
           (nzPageIndexChange)="tableService.search()"
           (nzPageSizeChange)="tableService.search(true)"
 >

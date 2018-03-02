@@ -9,7 +9,7 @@ import {TaskService} from './task.service';
 })
 export class TaskComponent implements OnInit {
   params = {
-    // search: '',
+    search: '',
   };
   constructor(
     private taskService: TaskService
