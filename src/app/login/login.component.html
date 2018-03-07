@@ -12,13 +12,13 @@
         <form nz-form [formGroup]="form" class="login-form">
           <div nz-form-item>
             <div nz-form-control>
-              <nz-input formControlName="userName" [nzPlaceHolder]="'请输入用户名'" [nzSize]="'large'">
+              <nz-input formControlName="username" [nzPlaceHolder]="'请输入用户名'" [nzSize]="'large'">
                 <ng-template #prefix>
                   <i class="anticon anticon-user"></i>
                 </ng-template>
               </nz-input>
               <div nz-form-explain
-                   *ngIf="form.controls.userName.dirty&&form.controls.userName.hasError('required')">
+                   *ngIf="form.controls.username.dirty&&form.controls.username.hasError('required')">
                 请输入用户名
               </div>
             </div>

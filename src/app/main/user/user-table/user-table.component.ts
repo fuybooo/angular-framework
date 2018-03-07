@@ -100,7 +100,6 @@ export class UserTableComponent implements OnInit, OnDestroy {
         status: 0,
         id: data.id
       }).subscribe((res: HttpRes) => {
-        // if (res.code === 200) {
         if (res.code === 0) {
           this.messageService.success('删除成功');
           this.userService.tableEvent.emit();

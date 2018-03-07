@@ -1,6 +1,7 @@
 import {EventEmitter, Injectable} from '@angular/core';
 import {DataService} from '../../core/data.service';
 import {HttpClient} from '@angular/common/http';
+import {LoginService} from '../../login/login.service';
 
 @Injectable()
 export class TaskService {
@@ -11,6 +12,24 @@ export class TaskService {
   ) { }
   postTasks(params) {
     return this.http.post(this.dataService.urls.tasks, params);
+  }
+
+  /**
+   * 根据当前人员信息判断是否显示按钮
+   */
+  isShowOpBtn(data) {
+    let flag = false;
+    const loginInfo = LoginService.getLoginInfo();
+    if (loginInfo && data.issubmit !== '1') {
+      if (loginInfo.result.role === 1) {
+        flag = true;
+      } else if (loginInfo.result.role === 2) {
+        if (loginInfo.result.id === data.liableid) {
+          flag = true;
+        }
+      }
+    }
+    return flag;
   }
   saveTask(params) {
     // 提交 保存

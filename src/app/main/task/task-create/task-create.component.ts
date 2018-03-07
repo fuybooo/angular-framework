@@ -6,6 +6,7 @@ import {HttpRes} from '../../../core/core.model';
 import {MessageService} from '../../../core/message.service';
 import {UserService} from '../../user/user.service';
 import {Router} from '@angular/router';
+import {LoginService} from '../../../login/login.service';
 
 @Component({
   selector: 'app-task-create',
@@ -31,21 +32,22 @@ export class TaskCreateComponent implements OnInit {
   field6Options = [];
   stateArr = [
     {
-      label: '已完成',
+      label: '绿灯',
       value: '1',
       checked: false,
     },
     {
-      label: '未完成',
+      label: '黄灯',
       value: '2',
       checked: false,
     },
     {
-      label: '未开始',
+      label: '红灯',
       value: '3',
       checked: true,
     },
   ];
+  isAdmin = LoginService.isAdmin();
   formatterYuan = value => `￥${value}`;
   parserYuan = value => value.replace('￥', '');
   constructor(
@@ -71,8 +73,6 @@ export class TaskCreateComponent implements OnInit {
       liableid: [this.taskData.liableid, [Validators.required, Validators.maxLength(100)]],
       detaillist: [this.taskData.detaillist, [Validators.required, Validators.maxLength(100)]],
       nextliableid: [this.taskData.nextliableid, [Validators.maxLength(100)]],
-      // field9: [this.taskData.field9, [Validators.maxLength(100)]],
-      // field10: [this.taskData.field10],
     });
   }
   moneyNotEmpty() {
@@ -109,7 +109,6 @@ export class TaskCreateComponent implements OnInit {
     }
     this.taskService.postTasks(Object.assign({}, this.form.value, params)).subscribe((res: HttpRes) => {
       if (res.code === 0) {
-      // if (res.code === 200) {
         let text = '保存成功';
         if (type === 2) {
           text = '提交成功';
@@ -132,8 +131,8 @@ export class TaskCreateComponent implements OnInit {
       page: 1,
       per_page: 10
     }).subscribe((res: HttpRes) => {
-      if (res.code === 200) {
-        const result = res.data.result;
+      // if (res.code === 0) {
+        const result = res.data.result || [];
         if (type === 1) {
           this.field5Options = result;
         } else if (type === 2) {
@@ -142,7 +141,7 @@ export class TaskCreateComponent implements OnInit {
           this.field5Options = result;
           this.field6Options = result;
         }
-      }
+      // }
     });
   }
   stateChange(state) {

@@ -55,10 +55,10 @@
           <span><a (click)="onClickDetail(data)">详情</a></span>
         </ng-container>
         <ng-container *ngIf="isTaskDetail">
-          <ng-container *ngIf="data.status === '1'">
+          <ng-container *ngIf="data.issubmit === '1'">
             <span>已提交</span>
           </ng-container>
-          <ng-container *ngIf="data.status !== '1'">
+          <ng-container *ngIf="taskService.isShowOpBtn(data)">
             <span><a (click)="onClickEdit(data)">编辑</a></span>
             <span><a (click)="onClickSubmit(data, content)">提交</a></span>
           </ng-container>

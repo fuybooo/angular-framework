@@ -26,8 +26,8 @@ export class DataService {
       save_task: '/save_task',
       save_user: '/save_user',
       del_user: '/del_user',
-      tasks: '/tasks',
-      users: '/users',
+      tasks: '/api/tasks',
+      users: '/api/users',
     };
     for (const url in this.urls) {
       if (this.urls.hasOwnProperty(url)) {

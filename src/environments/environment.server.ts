@@ -3,10 +3,10 @@
  */
 export const environment = {
   production: true,
-  deployPath: '',
-  apiPath: 'http://210.12.202.144:8090/sf-webapp/api',
+  deployPath: 'dist',
+  apiPath: '/sf-webapp',
   apiPathChangeable: true,
-  isStatic: true,
+  isStatic: false,
   allowCORS: true,
   defaultLng: 'zh',
 };

@@ -136,7 +136,7 @@
         </nz-select>
       </div>
     </div>
-    <div nz-form-item nz-row *ngIf="isEdit">
+    <div nz-form-item nz-row *ngIf="isEdit && isAdmin">
       <div nz-form-label nz-col [nzSpan]="7">
         <label nz-form-item-required>状态</label>
       </div>
@@ -161,9 +161,9 @@
         <button nz-button [nzType]="'primary'" (click)="onClickSave(0)"
                 [disabled]="isEdit ? form.invalid : (form.invalid || !getFormControl('liableid').value)"
         ><span>保存</span></button>
-        <button nz-button [nzType]="'primary'" (click)="onClickSave(1)"
-                [disabled]="isEdit ? form.invalid : (form.invalid || !getFormControl('liableid').value || !getFormControl('nextliableid').value)"
-        ><span>提交</span></button>
+        <!--<button nz-button [nzType]="'primary'" (click)="onClickSave(1)"-->
+                <!--[disabled]="isEdit ? form.invalid : (form.invalid || !getFormControl('liableid').value || !getFormControl('nextliableid').value)"-->
+        <!--&gt;<span>提交</span></button>-->
       </div>
     </div>
   </form>

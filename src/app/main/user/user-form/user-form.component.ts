@@ -49,7 +49,6 @@ export class UserFormComponent implements OnInit {
       };
     }
     this.userService.postUsers(Object.assign({}, this.form.value, params)).subscribe((res: HttpRes) => {
-      // if (res.code === 200) {
       if (res.code === 0) {
         let text = '用户添加成功';
         if (this.operateType === 'edit') {

@@ -15,7 +15,7 @@ export class TaskDetailComponent implements OnInit, OnDestroy {
   @Input() subscript;
   params: any = {};
   constructor(
-    private taskService: TaskService,
+    public taskService: TaskService,
     private messageService: MessageService,
     private modalService: ModalService,
     private subject: NzModalSubject
