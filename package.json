@@ -13,8 +13,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "build": "ng build --env=prod --aot --prod -dop --buildOptimizer --preserveSymlinks --bh / --deploy-url /angular-framework/",
-    "build-debug": "ng build --env=debug --aot --prod -dop --buildOptimizer --preserveSymlinks --bh / --deploy-url /",
-    "build-server": "ng build --env=server --aot --prod -dop --buildOptimizer --preserveSymlinks --bh / --deploy-url /dist/"
+    "build-debug": "ng build --env=debug --aot --prod -dop --buildOptimizer --preserveSymlinks --bh / --deploy-url /sf-webapp/ -op dist-debug",
+    "build-server": "ng build --env=server --aot --prod -dop --buildOptimizer --preserveSymlinks --bh / --deploy-url /dist/ -op dist-server"
   },
   "private": true,
   "dependencies": {

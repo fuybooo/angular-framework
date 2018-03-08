@@ -16,6 +16,7 @@ import {ModalService} from './modal.service';
 import {UtilService} from './util.service';
 import {UserService} from '../main/user/user.service';
 import {LoginService} from '../login/login.service';
+import {AuthGuardService} from '../shared/guard/auth-guard.service';
 
 export function createTranslateHttpLoader(http: any) {
   return new TranslateHttpLoader(http, environment.deployPath + '/assets/i18n/', '.json');
@@ -48,6 +49,7 @@ export function createTranslateHttpLoader(http: any) {
     UtilService,
     UserService,
     LoginService,
+    AuthGuardService,
   ]
 })
 export class CoreModule { }

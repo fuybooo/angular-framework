@@ -3,6 +3,7 @@ import {LoginService} from './login.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {HttpRes} from '../core/core.model';
 import {Router} from '@angular/router';
+import {MessageService} from '../core/message.service';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               private router: Router,
+              private messageService: MessageService,
               private loginService: LoginService) {
   }
 
@@ -43,7 +45,10 @@ export class LoginComponent implements OnInit {
         //   }
         // };
         // === test end
-
+        if (res.msg === '登录失败') {
+          this.messageService.error('用户名密码错误！');
+          return;
+        }
         LoginService.saveLoginInfo(res.data.result);
         this.router.navigate(['/main']);
       }

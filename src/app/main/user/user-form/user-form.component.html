@@ -5,8 +5,9 @@
         <label>用户名</label>
       </div>
       <div nz-col [nzSpan]="12" nz-form-control>
-        <nz-input formControlName="username" [nzType]="'text'" [nzPlaceHolder]="''" [nzSize]="'large'">
+        <nz-input *ngIf="operateType === 'add'" formControlName="username" [nzType]="'text'" [nzPlaceHolder]="''" [nzSize]="'large'">
         </nz-input>
+        <ng-container *ngIf="operateType === 'edit'">{{form.controls['username'].value}}</ng-container>
       </div>
     </div>
     <div nz-form-item nz-row>

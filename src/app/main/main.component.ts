@@ -17,14 +17,14 @@ export class MainComponent implements OnInit {
     {
       label: '新建任务',
       code: 'taskCreate',
-      route: '/main',
+      route: '/main/taskCreate',
       iconCls: {'anticon-file-add': true},
       isActive: false
     },
     {
       label: '任务列表',
       code: 'taskList',
-      route: '/main/taskList',
+      route: '/main',
       iconCls: {'anticon-bars': true},
       isActive: true
     },

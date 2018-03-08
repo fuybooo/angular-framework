@@ -6,6 +6,7 @@ import {Title} from '@angular/platform-browser';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/map';
+import {loginInfoKey} from '../shared/shared.model';
 
 @Injectable()
 export class CoreService {
@@ -40,6 +41,7 @@ export class CoreService {
       });
   }
   logout() {
+    localStorage.removeItem(loginInfoKey);
     this.router.navigate(['/login']);
   }
 }

@@ -4,14 +4,14 @@ import {TaskCreateComponent} from './task-create/task-create.component';
 
 export const taskRoutes: Routes = [
   {
-    path: '',
+    path: 'taskCreate',
     component: TaskCreateComponent,
     data: {
       title: '新建任务'
     }
   },
   {
-    path: 'taskList',
+    path: '',
     component: TaskComponent,
     data: {
       title: '任务列表'

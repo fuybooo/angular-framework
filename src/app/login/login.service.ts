@@ -3,8 +3,8 @@ import {DataService} from '../core/data.service';
 import {HttpClient} from '@angular/common/http';
 import {CoreService} from '../core/core.service';
 import {MessageService} from '../core/message.service';
+import {loginInfoKey} from '../shared/shared.model';
 
-const loginInfoKey = '__loginInfoKey__';
 @Injectable()
 export class LoginService {
   constructor(
