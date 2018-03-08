@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
         // };
         // === test end
 
-        LoginService.saveLoginInfo(res.data);
+        LoginService.saveLoginInfo(res.data.result);
         this.router.navigate(['/main']);
       }
     });

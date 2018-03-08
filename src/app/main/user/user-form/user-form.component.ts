@@ -30,7 +30,7 @@ export class UserFormComponent implements OnInit {
   ngOnInit() {
     this.form = this.fb.group({
       username: [this.userData.username],
-      password: [this.userData.password],
+      password: [''],
       displayname: [this.userData.displayname],
       role: [this.userData.role],
     });

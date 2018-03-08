@@ -43,8 +43,11 @@ export class MainComponent implements OnInit {
 
   ngOnInit() {
     this.currentUser = LoginService.getLoginInfo();
-    if (this.currentUser && !this.currentUser.name) {
-      this.currentUser.name = 'Admin';
+    if (this.currentUser.role === '1') {
+      this.navList = this.navList.filter(v => v.code !== 'userManagement');
+    }
+    if (this.currentUser && !this.currentUser.displayname) {
+      this.currentUser.displayname = this.currentUser.username;
     }
     this.initNavList();
     // 路由改变时,改变导航栏状态

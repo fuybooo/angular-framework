@@ -21,7 +21,7 @@ export class LoginService {
   }
   static isAdmin() {
     const loginInfo = LoginService.getLoginInfo();
-    return loginInfo && loginInfo.result.role === 2;
+    return loginInfo && loginInfo.role === '2';
   }
   login(params) {
     return this.http.post(this.dataService.urls.login, params);

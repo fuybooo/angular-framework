@@ -21,10 +21,10 @@ export class TaskService {
     let flag = false;
     const loginInfo = LoginService.getLoginInfo();
     if (loginInfo && data.issubmit !== '1') {
-      if (loginInfo.result.role === 1) {
+      if (loginInfo.role === '1') {
         flag = true;
-      } else if (loginInfo.result.role === 2) {
-        if (loginInfo.result.id === data.liableid) {
+      } else if (loginInfo.role === '2') {
+        if (loginInfo.id === data.liableid) {
           flag = true;
         }
       }

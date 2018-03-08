@@ -7,6 +7,7 @@ import {UserService} from '../user.service';
 import {TableService} from '../../../shared/component/table/table.service';
 import {HttpRes} from '../../../core/core.model';
 import {MessageService} from '../../../core/message.service';
+import {LoginService} from '../../../login/login.service';
 
 @Component({
   selector: 'app-user-table',
@@ -51,6 +52,8 @@ export class UserTableComponent implements OnInit, OnDestroy {
   ];
   modal;
   subscript;
+  isAdmin = LoginService.isAdmin();
+  userInfo = LoginService.getLoginInfo();
   constructor(
     private nzModalService: NzModalService,
     private modalService: ModalService,
