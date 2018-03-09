@@ -80,20 +80,10 @@ export class TaskTableComponent implements OnInit, OnDestroy {
       title: '状态',
       field: 'status',
       width: '6%',
-      formatter: (v: string, r: any) => {
-        const dayM = 24 * 60 * 60 * 1000;
+      formatter: (v: string, i: number, r: any) => {
         let status = '1';
         if (!v) {
-          if (r.enddate) {
-            if (r.enddate - r.begindate < 4 * dayM) {
-              // 小于4天，绿灯
-              status = '1';
-            } else if (r.enddate - r.begindate >= 4 * dayM && r.enddate - r.begindate <= 7) {
-              status = '2';
-            } else if (r.enddate - r.begindate > 7 * dayM) {
-              status = '3';
-            }
-          }
+          status = this.taskService.getTaskStatus(r);
         } else {
           status = v;
         }
@@ -122,18 +112,18 @@ export class TaskTableComponent implements OnInit, OnDestroy {
   ];
   // 下一个任务负责人
   liableid = '';
-  liablenameOptions: any[] = [];
+  liablenameOptions;
   // 判断是否显示编辑/提交
   modal;
   subscript;
-  constructor(
-    public tableService: TableService,
-    public taskService: TaskService,
-    private nzModalService: NzModalService,
-    private messageService: MessageService,
-    private modalService: ModalService,
-    private userService: UserService,
-  ) { }
+
+  constructor(public tableService: TableService,
+              public taskService: TaskService,
+              private nzModalService: NzModalService,
+              private messageService: MessageService,
+              private modalService: ModalService,
+              private userService: UserService) {
+  }
 
   ngOnInit() {
     this.userService.getUsers({
@@ -141,7 +131,7 @@ export class TaskTableComponent implements OnInit, OnDestroy {
       per_page: 10
     }).subscribe((res: HttpRes) => {
       // if (res.code === 0) {
-        this.liablenameOptions = res.data.result || [];
+      this.liablenameOptions = res.data.result || [];
       // }
     });
     // 根据不同页面重新设置columns的宽度
@@ -163,6 +153,7 @@ export class TaskTableComponent implements OnInit, OnDestroy {
       }
     });
   }
+
   initSearch() {
     this.tableService.initTable({
       url: this.url,
@@ -171,6 +162,7 @@ export class TaskTableComponent implements OnInit, OnDestroy {
       params: this.params,
     });
   }
+
   ngOnDestroy() {
     if (this.subscript) {
       this.subscript.unsubscribe();
@@ -179,6 +171,7 @@ export class TaskTableComponent implements OnInit, OnDestroy {
       this.modal.destroy();
     }
   }
+
   onClickDetail(data) {
     this.modal = this.nzModalService.open({
       title: '任务详情',
@@ -201,13 +194,14 @@ export class TaskTableComponent implements OnInit, OnDestroy {
               this.messageService.success('任务已彻底完成!');
               this.modal.destroy();
               // 指定特定的组件触发订阅事件,这里不需要触发任务详情组件的订阅事件
-              this.taskService.tableEvent.emit({isTaskDetail: false});
+              this.taskService.tableEvent.emit({isTaskDetail: this.isTaskDetail});
             }
           });
         });
       }
     });
   }
+
   onClickEdit(data) {
     this.modal = this.nzModalService.open({
       title: '编辑任务',
@@ -222,14 +216,19 @@ export class TaskTableComponent implements OnInit, OnDestroy {
     });
   }
 
+  /**
+   * 点击提交
+   * @param data
+   * @param content
+   */
   onClickSubmit(data, content) {
-    const liablename = this.liablenameOptions.find(v => v.id === this.liableid).displayname;
     this.modal = this.nzModalService.open({
       title: '选择下一步负责人',
       content: content,
       width: 400,
       zIndex: 1030,
       onOk: () => {
+        const liablename = this.liablenameOptions.find(v => v.id === this.liableid).displayname;
         this.taskService.postTasks({
           method: 'put',
           issubmit: 1,

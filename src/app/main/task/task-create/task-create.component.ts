@@ -19,7 +19,7 @@ export class TaskCreateComponent implements OnInit {
     id: '',
     taskname: '',
     companyname: '',
-    amount: '',
+    amount: 0,
     district: '',
     process: '',
     detaillist: '',
@@ -63,6 +63,9 @@ export class TaskCreateComponent implements OnInit {
   ngOnInit() {
     if (!this.isEdit) {
       this.userSearchChange();
+    } else {
+      const status = this.taskService.getTaskStatus(this.taskData);
+      this.stateArr.forEach(v => v.checked = v.value === status);
     }
     this.form = this.fb.group({
       taskname: [this.taskData.taskname, [Validators.required, Validators.maxLength(100)]],
@@ -78,7 +81,7 @@ export class TaskCreateComponent implements OnInit {
   }
   moneyNotEmpty() {
     return function(control: FormControl) {
-      if (control.value === '￥' || control.value === 0) {
+      if (control.value === '￥' || control.value === 0 || control.value === '￥0' || control.value === '0') {
         return {error: true, required: true};
       } else {
         return null;
@@ -91,35 +94,54 @@ export class TaskCreateComponent implements OnInit {
 
   /**
    * 提交/保存任务
-   * type = 1 提交
-   * type = 2 保存
-   * @param type
    */
-  onClickSave(type) {
+  onClickSave() {
+    if (this.getFormControl('amount').value === 0) {
+      this.messageService.error('金额不能为0');
+      return;
+    }
+    const liable = this.field5Options.find(v => v.id === + this.getFormControl('liableid').value);
+    const nextliable = this.field5Options.find(v => v.id === + this.getFormControl('nextliableid').value);
+    let liablename = '';
+    let nextliablename = '';
+    if (nextliable) {
+      nextliablename = nextliable.displayname;
+    }
+    if (liable) {
+      liablename = liable.displayname;
+    }
     let params: any = {
       method: 'post',
-      issubmit: type,
-      status: 0
+      issubmit: 0,
+      status: 0,
     };
+    if (liablename) {
+      params.liablename = liablename;
+    }
     if (this.isEdit) {
       params = {
         method: 'put',
         id: this.taskData.id,
-        issubmit: type,
+        issubmit: 0,
         taskkey: this.taskData.taskkey,
       };
+      if (liablename) {
+        params.liablename = liablename;
+      }
+      if (nextliable) {
+        params.nextliablename = nextliablename;
+      }
     }
     this.taskService.postTasks(Object.assign({}, this.form.value, params)).subscribe((res: HttpRes) => {
       if (res.code === 0) {
-        let text = '保存成功';
-        if (type === 2) {
-          text = '提交成功';
-        }
+        const text = '保存成功';
         this.messageService.success(text);
-        this.taskService.tableEvent.emit({isTaskDetail: false});
+        this.taskService.tableEvent.emit({isTaskDetail: this.isEdit});
         this.form.reset();
         this.subject.destroy();
-        this.router.navigate(['/main/taskList']);
+        if (!this.isEdit) {
+          this.router.navigate(['/main']);
+        }
       }
     });
   }
