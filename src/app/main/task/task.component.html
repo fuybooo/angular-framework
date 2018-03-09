@@ -3,6 +3,7 @@
     <nz-input [nzType]="'search'"
               [nzPlaceHolder]="'输入内容,回车进行搜索...'"
               [(ngModel)]="params.companyname"
+              (keyup.enter)="onSearch()"
               (nzOnSearch)="onSearch()"
     ></nz-input>
   </div>

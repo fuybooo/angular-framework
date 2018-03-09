@@ -187,7 +187,6 @@ export class TaskTableComponent implements OnInit, OnDestroy {
       footer: false,
       componentParams: {
         taskData: data,
-        subscript: this.subscript
       }
     });
     this.modal.subscribe(event => {

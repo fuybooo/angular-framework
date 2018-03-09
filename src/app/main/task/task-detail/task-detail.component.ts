@@ -12,7 +12,6 @@ import {NzModalSubject} from 'ng-zorro-antd';
 })
 export class TaskDetailComponent implements OnInit, OnDestroy {
   @Input() taskData: any = {};
-  @Input() subscript;
   params: any = {};
   constructor(
     public taskService: TaskService,
@@ -25,9 +24,6 @@ export class TaskDetailComponent implements OnInit, OnDestroy {
     this.params.taskkey = this.taskData.taskkey;
   }
   ngOnDestroy() {
-    if (this.subscript) {
-      this.subscript.unsubscribe();
-    }
   }
   onClickDone() {
     this.subject.next({type: 'done'});
