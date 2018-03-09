@@ -5,7 +5,7 @@ import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {BrowserModule} from '@angular/platform-browser';
-import {NgZorroAntdModule, NZ_LOCALE, zhCN} from 'ng-zorro-antd';
+import {NgZorroAntdModule, NZ_LOCALE, NZ_MESSAGE_CONFIG, zhCN} from 'ng-zorro-antd';
 import {environment} from '../../environments/environment';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpInterceptorService} from './http-interceptor.service';
@@ -40,6 +40,7 @@ export function createTranslateHttpLoader(http: any) {
   ],
   declarations: [],
   providers: [
+    {provide: NZ_MESSAGE_CONFIG, useValue: { nzMaxStack: 1} },
     {provide: NZ_LOCALE, useValue: zhCN},
     {provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true},
     CoreService,
