@@ -115,9 +115,6 @@ export class TaskCreateComponent implements OnInit {
       issubmit: 0,
       status: 0,
     };
-    if (liablename) {
-      params.liablename = liablename;
-    }
     if (this.isEdit) {
       params = {
         method: 'put',
@@ -125,17 +122,19 @@ export class TaskCreateComponent implements OnInit {
         issubmit: 0,
         taskkey: this.taskData.taskkey,
       };
-      if (liablename) {
-        params.liablename = liablename;
+      if (this.isAdmin) {
+        params.status = this.stateArr.find(v => v.checked).value;
       }
-      if (nextliable) {
-        params.nextliablename = nextliablename;
-      }
+    }
+    if (liablename) {
+      params.liablename = liablename;
+    }
+    if (nextliablename) {
+      params.nextliablename = nextliablename;
     }
     this.taskService.postTasks(Object.assign({}, this.form.value, params)).subscribe((res: HttpRes) => {
       if (res.code === 0) {
-        const text = '保存成功';
-        this.messageService.success(text);
+        this.messageService.success('保存成功！');
         this.taskService.tableEvent.emit({isTaskDetail: this.isEdit});
         this.form.reset();
         this.subject.destroy();

@@ -32,18 +32,22 @@ export class TaskService {
     return flag;
   }
   getTaskStatus(data) {
-    let status = '1';
-    const diff = Math.floor((Date.now() - (data.begindate || data.createtime)) / (24 * 60 * 60 * 1000));
-    console.log('当前时间-开始时间差出的天数：', diff);
-    if (diff < 4) {
-      // 小于4天，绿灯
-      status = '1';
-    } else if (diff >= 4 && diff <= 7) {
-      status = '2';
-    } else if (diff > 7) {
-      status = '3';
+    let status = data.status;
+    if (!data.status) {
+      const diff = Math.floor((Date.now() - (data.begindate || data.createtime)) / (24 * 60 * 60 * 1000));
+      if (diff < 4) {
+        // 小于4天，绿灯
+        status = '1';
+      } else if (diff >= 4 && diff <= 7) {
+        status = '2';
+      } else if (diff > 7) {
+        status = '3';
+      }
     }
     return status;
+  }
+  getUsedDays(data) {
+    return Math.floor(((data.enddate || Date.now()) - (data.begindate || data.createtime)) / (24 * 60 * 60 * 1000));
   }
   saveTask(params) {
     // 提交 保存

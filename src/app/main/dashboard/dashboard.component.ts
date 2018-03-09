@@ -43,7 +43,6 @@ export class DashboardComponent implements OnInit {
         field3: `abc${i}`,
       });
     }
-    console.log(this.data);
 
     for (let i = 0; i < 20; i++) {
       this.list.push({

@@ -89,7 +89,6 @@ export class TableTreeService {
       }
       value.isChecked = $event;
     });
-    console.log('所有的父元素', this.findAllParent(this.sourceData, item))
     this.findAllParent(this.sourceData, item).forEach(value => {
       this.changeItemStatus(value, this.sourceData);
     });

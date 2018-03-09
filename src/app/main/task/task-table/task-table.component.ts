@@ -63,13 +63,16 @@ export class TaskTableComponent implements OnInit, OnDestroy {
       field: 'begindate',
       width: '11%',
       formatter: (v) => {
-        return v ? `<span>${moment(v).format('YYYY-MM-DD HH:mm:ss')}</span>` : '';
+        return v ? `<span>${moment(v).format('YYYY-MM-DD')}</span>` : '';
       }
     },
     {
       title: '已用工作日',
       field: 'enddate',
-      width: '8%'
+      width: '8%',
+      formatter: (v, i, r) => {
+        return this.taskService.getUsedDays(r);
+      }
     },
     {
       title: '进程',
@@ -81,12 +84,7 @@ export class TaskTableComponent implements OnInit, OnDestroy {
       field: 'status',
       width: '6%',
       formatter: (v: string, i: number, r: any) => {
-        let status = '1';
-        if (!v) {
-          status = this.taskService.getTaskStatus(r);
-        } else {
-          status = v;
-        }
+        const status = this.taskService.getTaskStatus(r);
         let res;
         if (status === '1') {
           res = `<span class="task-status task-status-1" title="绿灯"></span>`;
