@@ -26,6 +26,7 @@ export class TaskCreateComponent implements OnInit {
     remark: '',
     liableid: '',
     nextliableid: '',
+    taskkey: '',
   };
   form: FormGroup;
   field5Options = [];
@@ -105,6 +106,7 @@ export class TaskCreateComponent implements OnInit {
         method: 'put',
         id: this.taskData.id,
         issubmit: type,
+        taskkey: this.taskData.taskkey,
       };
     }
     this.taskService.postTasks(Object.assign({}, this.form.value, params)).subscribe((res: HttpRes) => {

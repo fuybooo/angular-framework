@@ -99,13 +99,13 @@ export class TaskTableComponent implements OnInit, OnDestroy {
         }
         let res;
         if (status === '1') {
-          res = `<span class="task-status task-status-1"></span>`;
+          res = `<span class="task-status task-status-1" title="绿灯"></span>`;
         } else if (status === '2') {
-          res = `<span class="task-status task-status-2"></span>`;
+          res = `<span class="task-status task-status-2" title="黄灯"></span>`;
         } else if (status === '3') {
-          res = `<span class="task-status task-status-3"></span>`;
+          res = `<span class="task-status task-status-3" title="红灯"></span>`;
         } else {
-          res = `<span class="task-status task-status-1"></span>`;
+          res = `<span class="task-status task-status-1" title="绿灯"></span>`;
         }
         return res;
       }
