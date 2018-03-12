@@ -97,7 +97,7 @@ export class TaskCreateComponent implements OnInit {
    */
   onClickSave() {
     if (this.getFormControl('amount').value === 0) {
-      this.messageService.error('金额不能为0');
+      this.messageService.error('金额不能为0！');
       return;
     }
     const liable = this.field5Options.find(v => v.id === + this.getFormControl('liableid').value);
