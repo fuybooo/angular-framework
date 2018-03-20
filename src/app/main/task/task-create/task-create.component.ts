@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {TaskService} from '../task.service';
 import {NzModalSubject} from 'ng-zorro-antd';
@@ -8,12 +8,13 @@ import {UserService} from '../../user/user.service';
 import {Router} from '@angular/router';
 import {LoginService} from '../../../login/login.service';
 
+const taskInfoKey = '_taskInfo_';
 @Component({
   selector: 'app-task-create',
   templateUrl: './task-create.component.html',
   styleUrls: ['./task-create.component.scss']
 })
-export class TaskCreateComponent implements OnInit {
+export class TaskCreateComponent implements OnInit, OnDestroy {
   @Input() isEdit = false;
   @Input() taskData = {
     id: '',
@@ -63,6 +64,25 @@ export class TaskCreateComponent implements OnInit {
   ngOnInit() {
     if (!this.isEdit) {
       this.userSearchChange();
+      // 添加时初始化数据，初始化为之前保存的数据
+      const taskCacheJson = localStorage.getItem(taskInfoKey);
+      const taskCache = taskCacheJson && JSON.parse(taskCacheJson);
+      localStorage.removeItem(taskInfoKey);
+      if (taskCache) {
+        this.taskData = {
+          id: '',
+          taskname: taskCache.taskname,
+          companyname: taskCache.companyname,
+          amount: taskCache.amount || 0,
+          district: taskCache.district,
+          process: taskCache.process,
+          detaillist: taskCache.detaillist,
+          remark: taskCache.remark,
+          liableid: taskCache.liableid,
+          nextliableid: taskCache.nextliableid,
+          taskkey: '',
+        };
+      }
     } else {
       const status = this.taskService.getTaskStatus(this.taskData);
       this.stateArr.forEach(v => v.checked = v.value === status);
@@ -78,6 +98,12 @@ export class TaskCreateComponent implements OnInit {
       detaillist: [this.taskData.detaillist, [Validators.required, Validators.maxLength(100)]],
       nextliableid: [this.taskData.nextliableid, [Validators.maxLength(100)]],
     });
+  }
+  ngOnDestroy() {
+    // 离开任务页面时，保存填写的信息
+    if (!this.isEdit) {
+      localStorage.setItem(taskInfoKey, JSON.stringify(this.form.value));
+    }
   }
   moneyNotEmpty() {
     return function(control: FormControl) {

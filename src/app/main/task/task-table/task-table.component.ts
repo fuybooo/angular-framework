@@ -227,19 +227,25 @@ export class TaskTableComponent implements OnInit, OnDestroy {
       zIndex: 1030,
       onOk: () => {
         const liablename = this.liablenameOptions.find(v => v.id === this.liableid).displayname;
-        this.taskService.postTasks({
+        const params: any = {
           method: 'put',
           issubmit: 1,
           id: data.id,
           nextliableid: this.liableid,
-          nextliablename: liablename
-        }).subscribe((res: HttpRes) => {
+          nextliablename: liablename,
+          begindate: data.begindate
+        };
+        if (data.status) {
+          params.status = data.status;
+        }
+        this.taskService.postTasks(params).subscribe((res: HttpRes) => {
           if (res.code === 0) {
             this.taskService.postTasks({
               method: 'post',
               taskkey: data.taskkey,
               liableid: this.liableid,
-              liablename: liablename
+              liablename: liablename,
+              id: data.id,
             }).subscribe((resp: HttpRes) => {
               if (resp.code === 0) {
                 this.messageService.success('提交成功');
