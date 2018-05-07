@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {NzModalSubject} from 'ng-zorro-antd';
 import {UserService} from '../user.service';
 import {HttpRes} from '../../../core/core.model';
@@ -30,10 +30,13 @@ export class UserFormComponent implements OnInit {
   ngOnInit() {
     this.form = this.fb.group({
       username: [this.userData.username],
-      password: [''],
+      password: [this.userData.password, [Validators.required]],
       displayname: [this.userData.displayname],
       role: [this.userData.role],
     });
+  }
+  getFormControl(name) {
+    return this.form.controls[name];
   }
   onClickCancel() {
     this.subject.destroy();

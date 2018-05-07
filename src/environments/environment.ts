@@ -7,7 +7,7 @@ export const environment = {
   production: false, // 是否是发布版本
   deployPath: '.', // 部署路径
   // apiPath: 'http://localhost/sf-webapp', // 请求路径
-  apiPath: 'http://210.12.202.144:8090/sf-webapp', // 请求路径 本地调试
+  apiPath: 'http://10.12.117.16:8080/sf-webapp', // 请求路径 本地调试
   apiPathChangeable: false, // 请求路径是否可以更改
   isStatic: false, // 是否是静态环境
   allowCORS: true, // 是否允许跨域时带cookie参数

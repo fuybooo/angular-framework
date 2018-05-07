@@ -28,23 +28,15 @@ export class LoginComponent implements OnInit {
     });
   }
   login() {
+    if (this.form.invalid) {
+      return;
+    }
     this.loginService.login({
       username: this.form.controls.username.value,
       password: this.form.controls.password.value,
       method: 'post'
     }).subscribe((res: HttpRes) => {
       if (res.code === 0) {
-
-        // === test
-        // const res = {
-        //   data: {
-        //     result: {
-        //       id: 2,
-        //       role: 1
-        //     }
-        //   }
-        // };
-        // === test end
         if (res.msg === '登录失败') {
           this.messageService.error('用户名密码错误！');
           return;

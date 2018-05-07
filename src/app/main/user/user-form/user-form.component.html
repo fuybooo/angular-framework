@@ -2,7 +2,12 @@
   <form nz-form [formGroup]="form" class="login-form">
     <div nz-form-item nz-row>
       <div nz-form-label nz-col [nzSpan]="7">
-        <label>用户名</label>
+        <ng-container *ngIf="operateType === 'add'">
+          <label nz-form-item-required>用户名</label>
+        </ng-container>
+        <ng-container *ngIf="operateType === 'edit'">
+          <label>用户名</label>
+        </ng-container>
       </div>
       <div nz-col [nzSpan]="12" nz-form-control>
         <nz-input *ngIf="operateType === 'add'" formControlName="username" [nzType]="'text'" [nzPlaceHolder]="''" [nzSize]="'large'">
@@ -12,11 +17,14 @@
     </div>
     <div nz-form-item nz-row>
       <div nz-form-label nz-col [nzSpan]="7">
-        <label>密码</label>
+        <label nz-form-item-required>密码</label>
       </div>
       <div nz-col [nzSpan]="12" nz-form-control>
         <nz-input formControlName="password" [nzType]="'text'" [nzPlaceHolder]="''" [nzSize]="'large'">
         </nz-input>
+        <div nz-form-explain *ngIf="getFormControl('password').dirty&&getFormControl('password').hasError('required')">
+          必填项不能为空
+        </div>
       </div>
     </div>
     <div nz-form-item nz-row>
@@ -47,7 +55,7 @@
     <div nz-form-item nz-row [nzGutter]="20">
       <div nz-col [nzOffset]="6" [nzSpan]="12" nz-form-control class="tac">
         <button nz-button [nzType]="'default'" (click)="onClickCancel()"><span>取消</span></button>
-        <button nz-button [nzType]="'primary'" (click)="onClickOk()"><span>确定</span></button>
+        <button nz-button [nzType]="'primary'" (click)="onClickOk()" [disabled]="form.invalid || form.pristine"><span>确定</span></button>
       </div>
     </div>
   </form>

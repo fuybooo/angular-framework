@@ -25,7 +25,7 @@
           </div>
           <div nz-form-item>
             <div nz-form-control>
-              <nz-input formControlName="password" [nzType]="'password'" [nzPlaceHolder]="'请输入密码'" [nzSize]="'large'">
+              <nz-input formControlName="password" [nzType]="'password'" [nzPlaceHolder]="'请输入密码'" [nzSize]="'large'" (key.enter)="login()">
                 <ng-template #prefix>
                   <i class="anticon anticon-lock"></i>
                 </ng-template>
